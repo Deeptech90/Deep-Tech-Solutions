@@ -4,7 +4,7 @@
    ============================================================ */
 
 /* Google Fonts — must come before @import "tailwindcss" (CSS ordering rule) */
-@import url("https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Space+Grotesk:wght@400;500;600;700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Playfair+Display:ital,wght@1,400;1,600;1,700&family=Space+Grotesk:wght@400;500;600;700&display=swap");
 
 /* Tailwind CSS v4 — utility layer (used by motion primitives & new components) */
 @import "tailwindcss";
@@ -46,6 +46,7 @@
   /* Typography */
   --font-display: "Space Grotesk", "Inter", sans-serif;
   --font-body: "Inter", sans-serif;
+  --font-serif: "Playfair Display", Georgia, serif;
 
   /* Spacing */
   --section-padding: clamp(100px, 12vw, 160px) clamp(20px, 5vw, 80px);
@@ -1501,6 +1502,87 @@ button {
     flex-direction: column;
     align-items: flex-start;
   }
+}
+
+/* ── 3D Device Hero & Showreel Components ─────────────────── */
+@keyframes spinSlow {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.spin-badge-text {
+  animation: spinSlow 18s linear infinite;
+  transform-origin: center center;
+}
+
+.spin-badge-text:hover {
+  animation-play-state: paused;
+}
+
+/* Perspective container for 3D laptop stage */
+.hero-3d-stage {
+  perspective: 1200px;
+  perspective-origin: 50% 40%;
+}
+
+.hero-3d-laptop {
+  transform-style: preserve-3d;
+  transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* Responsive adjustment for mobile screens */
+@media (max-width: 768px) {
+  .hero-3d-stage {
+    perspective: none !important;
+  }
+  .hero-3d-laptop {
+    transform: none !important;
+  }
+  .spin-badge-text {
+    animation-duration: 25s;
+  }
+}
+
+/* Navigation Dropdown styling */
+.nav__dropdown-wrapper {
+  position: relative;
+}
+
+.nav__dropdown-menu {
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  margin-top: 12px;
+  background: rgba(30, 32, 34, 0.95);
+  backdrop-filter: blur(16px);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  padding: 10px 8px;
+  min-width: 200px;
+  box-shadow: var(--shadow-md);
+  z-index: 100;
+}
+
+.nav__dropdown-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 14px;
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: var(--color-text);
+  border-radius: var(--radius-sm);
+  transition: background 0.2s ease, color 0.2s ease;
+}
+
+.nav__dropdown-item:hover {
+  background: rgba(255, 255, 255, 0.08);
+  color: var(--color-accent);
 }
 
 /* ── prefers-reduced-motion — accessibility ─────────────────── */

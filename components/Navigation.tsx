@@ -6,6 +6,7 @@ import { motion, AnimatePresence, useReducedMotion } from "motion/react";
 export default function Navigation() {
   const [scrolled, setScrolled] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
+  const [expertiseOpen, setExpertiseOpen] = useState(false);
   const shouldReduceMotion = useReducedMotion();
 
   useEffect(() => {
@@ -16,11 +17,11 @@ export default function Navigation() {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  const navLinks = [
-    { label: "Work", href: "#work" },
-    { label: "Services", href: "#services" },
-    { label: "About", href: "#about" },
-    { label: "Contact", href: "#contact" },
+  const expertiseItems = [
+    { title: "Web Development", desc: "Custom Next.js & React Applications", href: "#expertise" },
+    { title: "AI Integration", desc: "LLM Agents & Automated Workflows", href: "#expertise" },
+    { title: "Brand Systems", desc: "Identity, Design Systems & Motion", href: "#expertise" },
+    { title: "Mobile Experience", desc: "Responsive Web & Cross-Platform Apps", href: "#expertise" },
   ];
 
   const mobileMenuVariants = {
@@ -69,13 +70,86 @@ export default function Navigation() {
 
           {/* Desktop Links */}
           <ul className="nav__links" role="list">
-            {navLinks.map((link) => (
-              <li key={link.href}>
-                <a href={link.href} id={`nav-link-${link.label.toLowerCase()}`}>
-                  {link.label}
-                </a>
-              </li>
-            ))}
+            <li>
+              <a href="#work" id="nav-link-work">
+                Work
+              </a>
+            </li>
+
+            {/* Expertise Link with Dropdown Chevron Indicator */}
+            <li
+              className="nav__dropdown-wrapper"
+              onMouseEnter={() => setExpertiseOpen(true)}
+              onMouseLeave={() => setExpertiseOpen(false)}
+            >
+              <button
+                className="flex items-center gap-1.5 py-1 text-sm font-medium transition-colors hover:text-[#C9A876] text-white/90"
+                onClick={() => setExpertiseOpen(!expertiseOpen)}
+                aria-expanded={expertiseOpen}
+                aria-haspopup="true"
+                id="nav-link-expertise"
+              >
+                Expertise
+                <svg
+                  className={`h-4 w-4 transition-transform duration-200 ${
+                    expertiseOpen ? "rotate-180 text-[#C9A876]" : "text-white/60"
+                  }`}
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke="currentColor"
+                  strokeWidth={2}
+                >
+                  <path strokeLinecap="round" strokeLinejoin="round" d="M19 9l-7 7-7-7" />
+                </svg>
+              </button>
+
+              {/* Dropdown Menu */}
+              <AnimatePresence>
+                {expertiseOpen && (
+                  <motion.div
+                    className="nav__dropdown-menu"
+                    initial={{ opacity: 0, y: 8, scale: 0.96 }}
+                    animate={{ opacity: 1, y: 0, scale: 1 }}
+                    exit={{ opacity: 0, y: 6, scale: 0.96 }}
+                    transition={{ duration: 0.2 }}
+                  >
+                    <div className="space-y-1 p-1">
+                      {expertiseItems.map((item, idx) => (
+                        <a
+                          key={idx}
+                          href={item.href}
+                          onClick={() => setExpertiseOpen(false)}
+                          className="nav__dropdown-item group flex flex-col items-start gap-0.5 rounded-lg p-2.5 transition-colors hover:bg-white/10"
+                        >
+                          <span className="text-sm font-semibold text-white group-hover:text-[#C9A876]">
+                            {item.title}
+                          </span>
+                          <span className="text-xs text-white/60 font-normal">
+                            {item.desc}
+                          </span>
+                        </a>
+                      ))}
+                    </div>
+                  </motion.div>
+                )}
+              </AnimatePresence>
+            </li>
+
+            <li>
+              <a href="#services" id="nav-link-services">
+                Services
+              </a>
+            </li>
+            <li>
+              <a href="#about" id="nav-link-about">
+                About
+              </a>
+            </li>
+            <li>
+              <a href="#contact" id="nav-link-contact">
+                Contact
+              </a>
+            </li>
           </ul>
 
           {/* Desktop CTA */}
@@ -119,7 +193,7 @@ export default function Navigation() {
         </div>
       </motion.nav>
 
-      {/* Mobile Menu — animated with AnimatePresence */}
+      {/* Mobile Menu */}
       <AnimatePresence>
         {mobileOpen && (
           <motion.div
@@ -130,16 +204,41 @@ export default function Navigation() {
             exit="hidden"
             variants={mobileMenuVariants}
           >
-            {navLinks.map((link) => (
-              <motion.a
-                key={link.href}
-                href={link.href}
-                onClick={() => setMobileOpen(false)}
-                variants={mobileLinkVariants}
-              >
-                {link.label}
-              </motion.a>
-            ))}
+            <motion.a
+              href="#work"
+              onClick={() => setMobileOpen(false)}
+              variants={mobileLinkVariants}
+            >
+              Work
+            </motion.a>
+            <motion.a
+              href="#expertise"
+              onClick={() => setMobileOpen(false)}
+              variants={mobileLinkVariants}
+            >
+              Expertise
+            </motion.a>
+            <motion.a
+              href="#services"
+              onClick={() => setMobileOpen(false)}
+              variants={mobileLinkVariants}
+            >
+              Services
+            </motion.a>
+            <motion.a
+              href="#about"
+              onClick={() => setMobileOpen(false)}
+              variants={mobileLinkVariants}
+            >
+              About
+            </motion.a>
+            <motion.a
+              href="#contact"
+              onClick={() => setMobileOpen(false)}
+              variants={mobileLinkVariants}
+            >
+              Contact
+            </motion.a>
             <motion.a
               href="#contact"
               className="btn btn-primary"

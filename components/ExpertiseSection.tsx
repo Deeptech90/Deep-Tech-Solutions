@@ -235,8 +235,35 @@ export default function ExpertiseSection() {
   const current = categories.find((c) => c.id === active)!;
 
   return (
-    <section className="expertise section" id="work" aria-label="Work and expertise">
-      <div className="container">
+    <section className="expertise section" id="work" aria-label="Work and expertise" style={{ id: "expertise" } as React.CSSProperties}>
+      {/* Crisp White Section Header immediately following dark hero */}
+      <div className="w-full bg-white text-gray-900 border-b border-gray-200 py-8 px-6 sm:px-12 mb-12 shadow-sm rounded-2xl">
+        <div className="container mx-auto flex items-center justify-between">
+          <div className="flex items-center gap-4">
+            <span className="h-3 w-3 rounded-full bg-[#C9A876]" />
+            <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold tracking-tight text-gray-900 font-sans">
+              Select an expertise
+            </h2>
+          </div>
+
+          <a
+            href="#expertise-content"
+            className="flex h-12 w-12 items-center justify-center rounded-full bg-gray-100 text-gray-800 transition-transform duration-300 hover:bg-gray-200 hover:translate-y-1"
+            aria-label="Scroll to view expertise"
+          >
+            <svg
+              className="h-6 w-6 stroke-current"
+              fill="none"
+              viewBox="0 0 24 24"
+              strokeWidth={2.5}
+            >
+              <path strokeLinecap="round" strokeLinejoin="round" d="M19 14l-7 7-7-7" />
+            </svg>
+          </a>
+        </div>
+      </div>
+
+      <div className="container" id="expertise-content">
         <FadeUp>
           <div className="section-header">
             <div className="section-header__inner">
