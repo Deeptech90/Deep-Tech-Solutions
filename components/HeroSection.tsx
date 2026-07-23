@@ -120,11 +120,11 @@ export default function HeroSection() {
                     <div>
                       {/* Category Headline in Italic Serif Font mixing White + Warm Gold */}
                       <h2 className="font-serif italic text-xl sm:text-3xl md:text-4xl tracking-wide font-normal">
-                        <span className="text-white drop-shadow-sm">Selected </span>
-                        <span className="text-[#E5A853] drop-shadow-md">Projects</span>
+                        <span className="text-white drop-shadow-sm">Recent </span>
+                        <span className="text-[#E5A853] drop-shadow-md">Work</span>
                       </h2>
                       <p className="text-[10px] sm:text-xs text-slate-400 tracking-wider uppercase font-mono mt-1">
-                        High-Impact Digital Experiences • 2026
+                        Web Dev & Lead Generation • Live Projects
                       </p>
                     </div>
 
@@ -163,119 +163,157 @@ export default function HeroSection() {
                     animate="visible"
                   >
                     
-                    {/* CARD 1 (LEFT) — Rotated -8deg */}
+                    {/* CARD 1 (LEFT) — Naamakaran — Rotated -8deg */}
                     <motion.div
                       variants={cardVariantsLeft}
                       className="group relative rounded-xl border border-white/15 bg-[#161B26]/90 p-2 sm:p-3 shadow-xl backdrop-blur-md transition-all duration-300 hover:z-30 hover:scale-105 hover:border-amber-400/40"
                       style={{ zIndex: 10 }}
                     >
-                      {/* Date Badge */}
+                      {/* Category Badge */}
                       <div className="mb-1.5 flex items-center justify-between">
                         <span className="inline-block rounded-md bg-white/10 px-1.5 py-0.5 text-[9px] sm:text-[11px] font-mono text-white/70">
-                          Q1 2026
+                          Live ✦
                         </span>
-                        <span className="h-1.5 w-1.5 rounded-full bg-blue-400" />
+                        <span className="h-1.5 w-1.5 rounded-full bg-emerald-400" />
                       </div>
 
-                      {/* Photo / Visual Placeholder */}
-                      <div className="relative aspect-[4/3] w-full overflow-hidden rounded-lg bg-gradient-to-br from-blue-900/60 to-slate-900 border border-white/10">
-                        {/* PLACEHOLDER IMAGE: Replace with actual project screenshot */}
-                        <svg className="h-full w-full p-3" viewBox="0 0 200 150" fill="none">
-                          <rect width="200" height="150" fill="#0F172A" />
-                          <circle cx="100" cy="60" r="30" fill="url(#grad1)" />
-                          <rect x="30" y="105" width="140" height="8" rx="4" fill="#334155" />
-                          <rect x="50" y="120" width="100" height="6" rx="3" fill="#C9A876" />
-                          <defs>
-                            <linearGradient id="grad1" x1="0" y1="0" x2="1" y2="1">
-                              <stop offset="0%" stopColor="#3B82F6" />
-                              <stop offset="100%" stopColor="#9333EA" />
-                            </linearGradient>
-                          </defs>
-                        </svg>
-                        <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent" />
-                      </div>
+                      {/* Project Visual — Naamakaran branding */}
+                      {/*
+                        PLACEHOLDER VISUAL: Ideally swap this SVG for a real
+                        screenshot of naamakaran.com (e.g. <Image src="/naamakaran-preview.png" .../>).
+                        The screenshot file should be placed in /public/naamakaran-preview.png.
+                      */}
+                      <a
+                        href="https://naamakaran.com"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="block"
+                        tabIndex={-1}
+                      >
+                        <div className="relative aspect-[4/3] w-full overflow-hidden rounded-lg bg-gradient-to-br from-orange-950/60 via-[#1a0a00] to-slate-900 border border-orange-400/20">
+                          <svg className="h-full w-full" viewBox="0 0 200 150" fill="none">
+                            <rect width="200" height="150" fill="#1A0A00" />
+                            {/* Om symbol styled backdrop */}
+                            <circle cx="100" cy="65" r="44" fill="#2D1200" stroke="#C9A876" strokeWidth="1.5" strokeOpacity="0.4" />
+                            <text x="100" y="78" textAnchor="middle" fontSize="36" fill="#E5A853" fontFamily="serif" opacity="0.9">ॐ</text>
+                            {/* Site name */}
+                            <rect x="22" y="120" width="156" height="12" rx="4" fill="#2D1200" />
+                            <text x="100" y="130" textAnchor="middle" fontSize="8" fill="#C9A876" fontFamily="monospace" letterSpacing="1">NAAMAKARAN.COM</text>
+                          </svg>
+                          <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent" />
+                        </div>
+                      </a>
 
                       {/* Card Bottom Label */}
                       <div className="mt-2">
                         <h4 className="text-[10px] sm:text-xs font-semibold text-white truncate">
-                          CyberSphere AI
+                          Naamakaran
                         </h4>
-                        <p className="text-[8px] sm:text-[10px] text-slate-400 truncate">
-                          SaaS Analytics Platform
+                        <p className="text-[8px] sm:text-[10px] text-orange-300/80 truncate">
+                          Multilingual Web App
                         </p>
                       </div>
                     </motion.div>
 
-                    {/* CARD 2 (MIDDLE / TOP LAYER) — Rotated 0deg (Highest Z-Index) */}
+                    {/* CARD 2 (MIDDLE / TOP LAYER) — UniqueBusinessName.com — Rotated 0deg (Highest Z-Index) */}
                     <motion.div
                       variants={cardVariantsCenter}
                       className="group relative rounded-xl border border-amber-400/30 bg-[#1C2333]/95 p-2 sm:p-3.5 shadow-2xl backdrop-blur-md transition-all duration-300 hover:z-30 hover:scale-105 hover:border-amber-400"
                       style={{ zIndex: 20 }}
                     >
-                      {/* Date Badge */}
+                      {/* Category Badge */}
                       <div className="mb-1.5 flex items-center justify-between">
                         <span className="inline-block rounded-md bg-[#C9A876]/20 px-2 py-0.5 text-[9px] sm:text-[11px] font-mono text-[#E5A853] font-medium">
-                          Q2 2026
+                          Live ✦
                         </span>
                         <span className="h-2 w-2 rounded-full bg-amber-400 animate-pulse" />
                       </div>
 
-                      {/* Photo / Visual Placeholder */}
-                      <div className="relative aspect-[4/3] w-full overflow-hidden rounded-lg bg-gradient-to-br from-amber-950/40 via-slate-900 to-indigo-950 border border-amber-400/20">
-                        {/* PLACEHOLDER IMAGE: Replace with actual project screenshot */}
-                        <svg className="h-full w-full p-3" viewBox="0 0 200 150" fill="none">
-                          <rect width="200" height="150" fill="#0B132B" />
-                          <path d="M20 120 L70 60 L110 90 L180 30" stroke="#E5A853" strokeWidth="4" fill="none" />
-                          <circle cx="180" cy="30" r="6" fill="#F59E0B" />
-                          <rect x="20" y="20" width="80" height="12" rx="3" fill="#1E293B" />
-                          <rect x="20" y="38" width="50" height="8" rx="2" fill="#334155" />
-                        </svg>
-                        <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-transparent to-transparent" />
-                      </div>
+                      {/* Project Visual — UniqueBusinessName branding */}
+                      {/*
+                        PLACEHOLDER VISUAL: Ideally swap this SVG for a real
+                        screenshot of uniquebusinessname.com (e.g. <Image src="/uniquebiz-preview.png" .../>).
+                        The screenshot file should be placed in /public/uniquebiz-preview.png.
+                      */}
+                      <a
+                        href="https://uniquebusinessname.com"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="block"
+                        tabIndex={-1}
+                      >
+                        <div className="relative aspect-[4/3] w-full overflow-hidden rounded-lg bg-gradient-to-br from-amber-950/40 via-slate-900 to-indigo-950 border border-amber-400/20">
+                          <svg className="h-full w-full" viewBox="0 0 200 150" fill="none">
+                            <rect width="200" height="150" fill="#0B1020" />
+                            {/* Anti-gravity wheel concept */}
+                            <circle cx="100" cy="70" r="40" stroke="#E5A853" strokeWidth="2" fill="none" strokeDasharray="6 3" />
+                            <circle cx="100" cy="70" r="28" stroke="#C9A876" strokeWidth="1.5" fill="#1C1500" strokeOpacity="0.7" />
+                            <circle cx="100" cy="70" r="8" fill="#F59E0B" />
+                            {/* Spin lines */}
+                            <line x1="60" y1="70" x2="80" y2="70" stroke="#E5A853" strokeWidth="1.5" strokeOpacity="0.6" />
+                            <line x1="120" y1="70" x2="140" y2="70" stroke="#E5A853" strokeWidth="1.5" strokeOpacity="0.6" />
+                            <text x="100" y="128" textAnchor="middle" fontSize="7" fill="#C9A876" fontFamily="monospace" letterSpacing="0.5">UNIQUEBUSINESSNAME.COM</text>
+                          </svg>
+                          <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-transparent to-transparent" />
+                        </div>
+                      </a>
 
                       {/* Card Bottom Label */}
                       <div className="mt-2">
                         <h4 className="text-[11px] sm:text-sm font-bold text-white truncate">
-                          Apex Quantum
+                          UniqueBusinessName
                         </h4>
                         <p className="text-[9px] sm:text-[11px] text-amber-300/80 truncate">
-                          Fintech & Wealth System
+                          Interactive Web Tool
                         </p>
                       </div>
                     </motion.div>
 
-                    {/* CARD 3 (RIGHT) — Rotated +8deg */}
+                    {/* CARD 3 (RIGHT) — Coming Soon / Local Business Client Slot — Rotated +8deg */}
+                    {/*
+                      PLACEHOLDER CARD: This slot is reserved for a future dental/restaurant
+                      or local service business client project.
+                      When ready, replace the SVG below with:
+                        <Image src="/client-project-preview.png" alt="[Client Name]" fill className="object-cover" />
+                      and update the h4 and category tag accordingly.
+                    */}
                     <motion.div
                       variants={cardVariantsRight}
-                      className="group relative rounded-xl border border-white/15 bg-[#161B26]/90 p-2 sm:p-3 shadow-xl backdrop-blur-md transition-all duration-300 hover:z-30 hover:scale-105 hover:border-amber-400/40"
+                      className="group relative rounded-xl border border-white/10 bg-[#161B26]/80 p-2 sm:p-3 shadow-xl backdrop-blur-md transition-all duration-300 hover:z-30 hover:scale-105 hover:border-white/25"
                       style={{ zIndex: 10 }}
                     >
-                      {/* Date Badge */}
+                      {/* Category Badge */}
                       <div className="mb-1.5 flex items-center justify-between">
-                        <span className="inline-block rounded-md bg-white/10 px-1.5 py-0.5 text-[9px] sm:text-[11px] font-mono text-white/70">
-                          Q3 2026
+                        <span className="inline-block rounded-md bg-white/10 px-1.5 py-0.5 text-[9px] sm:text-[11px] font-mono text-white/50">
+                          Q4 2026
                         </span>
-                        <span className="h-1.5 w-1.5 rounded-full bg-emerald-400" />
+                        <span className="h-1.5 w-1.5 rounded-full bg-white/30" />
                       </div>
 
-                      {/* Photo / Visual Placeholder */}
-                      <div className="relative aspect-[4/3] w-full overflow-hidden rounded-lg bg-gradient-to-br from-emerald-950/40 to-slate-900 border border-white/10">
-                        {/* PLACEHOLDER IMAGE: Replace with actual project screenshot */}
-                        <svg className="h-full w-full p-3" viewBox="0 0 200 150" fill="none">
-                          <rect width="200" height="150" fill="#064E3B" fillOpacity="0.3" />
-                          <rect x="30" y="30" width="140" height="90" rx="8" stroke="#10B981" strokeWidth="2" fill="#022C22" />
-                          <circle cx="100" cy="75" r="24" stroke="#6EE7B7" strokeWidth="2" fill="none" />
+                      {/* Coming Soon Visual */}
+                      <div className="relative aspect-[4/3] w-full overflow-hidden rounded-lg bg-[#111418] border border-white/10 flex items-center justify-center">
+                        <svg className="h-full w-full" viewBox="0 0 200 150" fill="none">
+                          <rect width="200" height="150" fill="#111418" />
+                          {/* Generic local biz storefront icon */}
+                          <rect x="55" y="60" width="90" height="55" rx="4" stroke="#444" strokeWidth="1.5" fill="#1A1D22" />
+                          <rect x="70" y="80" width="24" height="35" rx="2" fill="#222629" stroke="#3D3F41" strokeWidth="1" />
+                          <rect x="106" y="85" width="26" height="18" rx="2" fill="#222629" stroke="#3D3F41" strokeWidth="1" />
+                          <rect x="55" y="50" width="90" height="14" rx="3" fill="#1E2022" stroke="#3D3F41" strokeWidth="1" />
+                          <path d="M 55 60 L 100 38 L 145 60" stroke="#444" strokeWidth="1.5" fill="none" />
+                          <text x="100" y="130" textAnchor="middle" fontSize="7.5" fill="#555" fontFamily="monospace" letterSpacing="1">COMING SOON</text>
                         </svg>
-                        <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent" />
+                        {/* Overlay dashed border effect */}
+                        <div className="absolute inset-0 rounded-lg border border-dashed border-white/10" />
+                        <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />
                       </div>
 
                       {/* Card Bottom Label */}
                       <div className="mt-2">
-                        <h4 className="text-[10px] sm:text-xs font-semibold text-white truncate">
-                          Aura Luxury
+                        <h4 className="text-[10px] sm:text-xs font-semibold text-white/60 truncate">
+                          Local Business Client
                         </h4>
-                        <p className="text-[8px] sm:text-[10px] text-slate-400 truncate">
-                          E-Commerce Brand Experience
+                        <p className="text-[8px] sm:text-[10px] text-slate-500 truncate">
+                          Lead-Gen Website
                         </p>
                       </div>
                     </motion.div>
@@ -352,7 +390,7 @@ export default function HeroSection() {
             transition={{ duration: 0.8, delay: 0.6, ease: EASE }}
           >
             <p className="text-sm sm:text-base text-slate-300 font-normal leading-relaxed">
-              We craft high-performance digital products, bespoke web applications, and immersive brand experiences for market leaders.
+              Helping dental clinics, restaurants, and local service businesses get found online — and turn website visitors into paying customers.
             </p>
           </motion.div>
 

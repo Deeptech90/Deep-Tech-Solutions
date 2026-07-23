@@ -3,6 +3,26 @@
 import { useEffect } from "react";
 import { motion, AnimatePresence } from "motion/react";
 
+// ─────────────────────────────────────────────────────────────────────────────
+// SHOWREEL VIDEO CONFIG
+// ─────────────────────────────────────────────────────────────────────────────
+//
+// When you have a real showreel video ready, update ONE value below:
+//
+//   • Self-hosted MP4  → set SHOWREEL_SRC to "/videos/showreel.mp4"
+//                        and set SHOWREEL_TYPE to "video/mp4"
+//
+//   • YouTube embed    → set SHOWREEL_SRC to the YouTube nocookie embed URL
+//                        e.g. "https://www.youtube-nocookie.com/embed/YOUR_VIDEO_ID?autoplay=1"
+//                        and set SHOWREEL_TYPE to "youtube"
+//
+// Leave SHOWREEL_SRC as null to show the "Showreel coming soon" placeholder screen.
+//
+const SHOWREEL_SRC: string | null = null; // ← SWAP IN YOUR VIDEO PATH / URL HERE
+const SHOWREEL_TYPE: "video/mp4" | "youtube" = "video/mp4";
+
+// ─────────────────────────────────────────────────────────────────────────────
+
 interface VideoModalProps {
   isOpen: boolean;
   onClose: () => void;
@@ -12,7 +32,7 @@ interface VideoModalProps {
 export default function VideoModal({
   isOpen,
   onClose,
-  videoTitle = "Deep Tech Solutions — Agency Showreel",
+  videoTitle = "Deep Tech Solutions — Showreel",
 }: VideoModalProps) {
   // Handle ESC key to close modal
   useEffect(() => {
@@ -47,7 +67,7 @@ export default function VideoModal({
           exit={{ opacity: 0 }}
           transition={{ duration: 0.3 }}
         >
-          {/* Backdrop overlay */}
+          {/* Backdrop overlay — click outside to close */}
           <motion.div
             className="absolute inset-0 bg-black/85 backdrop-blur-md"
             initial={{ opacity: 0 }}
@@ -78,7 +98,7 @@ export default function VideoModal({
               <button
                 onClick={onClose}
                 className="flex h-9 w-9 items-center justify-center rounded-full bg-white/5 text-white/70 transition-all hover:bg-white/15 hover:text-white"
-                aria-label="Close video modal"
+                aria-label="Close showreel modal"
               >
                 <svg
                   className="h-5 w-5"
@@ -92,20 +112,94 @@ export default function VideoModal({
               </button>
             </div>
 
-            {/* Video Content / Showcase Frame */}
-            <div className="relative aspect-video w-full bg-black">
-              <iframe
-                className="h-full w-full border-0"
-                src="https://www.youtube-nocookie.com/embed/dQw4w9WgXcQ?autoplay=1&mute=0"
-                title="Agency Showreel Video"
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                allowFullScreen
-              />
+            {/* ── VIDEO CONTENT AREA ──────────────────────────────────────────── */}
+            <div className="relative aspect-video w-full bg-black overflow-hidden">
+              {SHOWREEL_SRC === null ? (
+                /* ── PLACEHOLDER: displayed until a real showreel video exists ── */
+                <div className="flex h-full w-full flex-col items-center justify-center gap-6 bg-gradient-to-br from-[#0B132B] via-[#111418] to-[#0a0a0f] px-8 text-center">
+                  {/* Animated camera/film icon */}
+                  <div className="relative flex h-24 w-24 items-center justify-center rounded-full border-2 border-[#C9A876]/30 bg-[#1A1D22]">
+                    <svg
+                      className="h-10 w-10 text-[#C9A876]"
+                      fill="none"
+                      viewBox="0 0 24 24"
+                      stroke="currentColor"
+                      strokeWidth={1.5}
+                    >
+                      <path
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        d="m15.75 10.5 4.72-4.72a.75.75 0 0 1 1.28.53v11.38a.75.75 0 0 1-1.28.53l-4.72-4.72M4.5 18.75h9a2.25 2.25 0 0 0 2.25-2.25v-9a2.25 2.25 0 0 0-2.25-2.25h-9A2.25 2.25 0 0 0 2.25 7.5v9a2.25 2.25 0 0 0 2.25 2.25Z"
+                      />
+                    </svg>
+                    {/* Pulse ring */}
+                    <span className="absolute inset-0 rounded-full border border-[#C9A876]/20 animate-ping" />
+                  </div>
+
+                  <div className="space-y-2">
+                    <h4 className="text-xl font-semibold text-white">
+                      Showreel Coming Soon
+                    </h4>
+                    <p className="max-w-sm text-sm text-slate-400 leading-relaxed">
+                      We&apos;re putting together a reel of our best web projects — local business websites, live web apps, and lead-gen campaigns. Check back shortly.
+                    </p>
+                  </div>
+
+                  {/* Live project links as temporary stand-in */}
+                  <div className="flex flex-col sm:flex-row items-center gap-3 mt-2">
+                    <a
+                      href="https://naamakaran.com"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="flex items-center gap-2 rounded-full border border-[#C9A876]/40 bg-[#C9A876]/10 px-5 py-2.5 text-sm font-medium text-[#E5A853] transition-all hover:bg-[#C9A876]/20 hover:border-[#C9A876]/70"
+                    >
+                      <svg className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+                        <path strokeLinecap="round" strokeLinejoin="round" d="M13.5 6H5.25A2.25 2.25 0 0 0 3 8.25v10.5A2.25 2.25 0 0 0 5.25 21h10.5A2.25 2.25 0 0 0 18 18.75V10.5m-10.5 6L21 3m0 0h-5.25M21 3v5.25" />
+                      </svg>
+                      View Naamakaran.com
+                    </a>
+                    <a
+                      href="https://uniquebusinessname.com"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="flex items-center gap-2 rounded-full border border-white/15 bg-white/5 px-5 py-2.5 text-sm font-medium text-white/80 transition-all hover:bg-white/10 hover:border-white/30"
+                    >
+                      <svg className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+                        <path strokeLinecap="round" strokeLinejoin="round" d="M13.5 6H5.25A2.25 2.25 0 0 0 3 8.25v10.5A2.25 2.25 0 0 0 5.25 21h10.5A2.25 2.25 0 0 0 18 18.75V10.5m-10.5 6L21 3m0 0h-5.25M21 3v5.25" />
+                      </svg>
+                      View UniqueBusinessName.com
+                    </a>
+                  </div>
+                </div>
+              ) : SHOWREEL_TYPE === "youtube" ? (
+                /* ── YOUTUBE EMBED MODE ─────────────────────────────────────── */
+                <iframe
+                  className="h-full w-full border-0"
+                  src={SHOWREEL_SRC}
+                  title={videoTitle}
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                  allowFullScreen
+                />
+              ) : (
+                /* ── SELF-HOSTED VIDEO MODE ─────────────────────────────────── */
+                <video
+                  className="h-full w-full object-cover"
+                  src={SHOWREEL_SRC}
+                  autoPlay
+                  controls
+                  playsInline
+                  title={videoTitle}
+                >
+                  <source src={SHOWREEL_SRC} type={SHOWREEL_TYPE} />
+                  Your browser does not support the video tag.
+                </video>
+              )}
             </div>
+            {/* ── END VIDEO CONTENT AREA ──────────────────────────────────────── */}
 
             {/* Modal Footer */}
             <div className="flex items-center justify-between px-6 py-3 bg-[#111214] text-xs text-white/50 border-t border-white/5">
-              <span>Deep Tech Solutions • 2026 Reel</span>
+              <span>Deep Tech Solutions • Web Dev & Lead Generation</span>
               <span>Press ESC or click outside to close</span>
             </div>
           </motion.div>
