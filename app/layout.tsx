@@ -54,8 +54,7 @@ export default function RootLayout({
     "name": "Deep Tech Solutions",
     "url": "https://deeptechsolutions.online",
     "sameAs": [
-      "https://www.facebook.com/deeptechsolutions",
-      "https://www.instagram.com/lustforlife342024/"
+      "https://www.facebook.com/deeptechsolutions"
     ]
   };
 
