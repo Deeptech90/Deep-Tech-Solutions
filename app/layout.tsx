@@ -16,12 +16,15 @@ export const metadata: Metadata = {
   keywords:
     "web design, lead generation, local SEO, dental website, restaurant website, local business, freelance web developer",
   authors: [{ name: "Deep Tech Solutions" }],
-  metadataBase: new URL("https://deeptechsolutions.digital"),
+  metadataBase: new URL("https://deeptechsolutions.online"),
+  alternates: {
+    canonical: "https://deeptechsolutions.online",
+  },
   openGraph: {
     title: "Deep Tech Solutions | Web Design & Lead Generation",
     description:
       "Premium web design, lead generation, and local SEO for dental clinics, restaurants, and local service businesses.",
-    url: "https://deeptechsolutions.digital",
+    url: "https://deeptechsolutions.online",
     siteName: "Deep Tech Solutions",
     type: "website",
   },
@@ -35,6 +38,9 @@ export const metadata: Metadata = {
     index: true,
     follow: true,
   },
+  verification: {
+    google: process.env.NEXT_PUBLIC_GOOGLE_VERIFICATION || "YOUR_GOOGLE_VERIFICATION_CODE",
+  },
 };
 
 export default function RootLayout({
@@ -42,8 +48,24 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  const jsonLd = {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    "name": "Deep Tech Solutions",
+    "url": "https://deeptechsolutions.online",
+    "sameAs": [
+      "https://www.facebook.com/deeptechsolutions"
+    ]
+  };
+
   return (
     <html lang="en" className={inter.variable} suppressHydrationWarning>
+      <head>
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+        />
+      </head>
       <body>
         <Providers>{children}</Providers>
       </body>
