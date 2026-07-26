@@ -60,28 +60,14 @@ export default function Navigation() {
         style={{ viewTransitionName: "site-header" } as React.CSSProperties}
       >
         <div className="nav__inner">
-          {/* Logo & Facebook Icon */}
-          <div className="flex items-center gap-3">
-            <a href="#" className="nav__logo" id="nav-logo">
-              <div className="nav__logo-mark" aria-hidden="true">
-                DT
-              </div>
-              Deep Tech Solutions
-            </a>
-            <a
-              href="https://www.facebook.com/deeptechsolutions"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="flex items-center justify-center w-7 h-7 rounded-full bg-[#232527] border border-[#3D3F41] text-[#9A9A9C] hover:text-[#C9A876] hover:border-[#C9A876]/60 transition-colors shadow-sm"
-              aria-label="Facebook Page"
-              id="nav-logo-facebook"
-              title="Visit our Facebook Page"
-            >
-              <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
-                <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/>
-              </svg>
-            </a>
-          </div>
+        <div className="nav__inner">
+          {/* Logo */}
+          <a href="#" className="nav__logo" id="nav-logo">
+            <div className="nav__logo-mark" aria-hidden="true">
+              DT
+            </div>
+            Deep Tech Solutions
+          </a>
 
           {/* Desktop Links */}
           <ul className="nav__links" role="list">
@@ -167,30 +153,14 @@ export default function Navigation() {
             </li>
           </ul>
 
-          {/* Desktop CTA & Facebook Link */}
-          <div className="flex items-center gap-3">
-            <a
-              href="https://www.facebook.com/deeptechsolutions"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="flex items-center justify-center w-8 h-8 rounded-lg border border-[#3D3F41] bg-[#1E2022] text-[#9A9A9C] hover:text-[#C9A876] hover:border-[#C9A876]/50 transition-colors"
-              aria-label="Facebook Page"
-              id="nav-facebook"
-              title="Visit Facebook Page"
-            >
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
-                <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/>
-              </svg>
-            </a>
-
-            <a
-              href="#contact"
-              className="btn btn-primary nav__cta hidden sm:inline-flex"
-              id="nav-cta-contact"
-            >
-              Get In Touch
-            </a>
-          </div>
+          {/* Desktop CTA */}
+          <a
+            href="#contact"
+            className="btn btn-primary nav__cta"
+            id="nav-cta-contact"
+          >
+            Get In Touch
+          </a>
 
           {/* Mobile Hamburger */}
           <button
@@ -269,20 +239,6 @@ export default function Navigation() {
               variants={mobileLinkVariants}
             >
               Contact
-            </motion.a>
-            <motion.a
-              href="https://www.facebook.com/deeptechsolutions"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="flex items-center gap-2 text-sm font-medium text-[#C9A876] py-2"
-              onClick={() => setMobileOpen(false)}
-              id="nav-mobile-facebook"
-              variants={mobileLinkVariants}
-            >
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
-                <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/>
-              </svg>
-              Follow us on Facebook
             </motion.a>
             <motion.a
               href="#contact"
