@@ -60,7 +60,6 @@ export default function Navigation() {
         style={{ viewTransitionName: "site-header" } as React.CSSProperties}
       >
         <div className="nav__inner">
-        <div className="nav__inner">
           {/* Logo */}
           <a href="#" className="nav__logo" id="nav-logo">
             <div className="nav__logo-mark" aria-hidden="true">
