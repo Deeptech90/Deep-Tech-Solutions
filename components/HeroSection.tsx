@@ -84,15 +84,27 @@ export default function HeroSection() {
                   {/* Subtle Gradient Overlay for Header & Footer readability */}
                   <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-black/40" />
 
-                  {/* Top Bar Header inside Screen */}
-                  <div className="absolute top-3 left-4 right-4 z-20 flex items-center justify-between">
-                    <div className="flex items-center gap-2 rounded-full bg-black/50 backdrop-blur-md px-3 py-1 border border-white/10 text-[10px] sm:text-xs text-white/90 font-mono">
-                      <span className="h-2 w-2 rounded-full bg-emerald-400 animate-pulse" />
-                      3D Hero Intro
+                  {/* Top Mock Browser Address Bar Overlay showing deeptechsolutions.online */}
+                  <div className="absolute top-2 left-3 right-3 z-30 flex items-center justify-between gap-2 rounded-lg bg-[#14161B]/85 backdrop-blur-md px-3 py-1.5 border border-white/15 shadow-xl">
+                    {/* Window Controls Dots */}
+                    <div className="flex items-center gap-1.5">
+                      <span className="h-2.5 w-2.5 rounded-full bg-[#FF5F56]" />
+                      <span className="h-2.5 w-2.5 rounded-full bg-[#FFBD2E]" />
+                      <span className="h-2.5 w-2.5 rounded-full bg-[#27C93F]" />
                     </div>
 
-                    <div className="flex items-center gap-2 rounded-full bg-[#C9A876]/20 backdrop-blur-md px-3 py-1 border border-[#C9A876]/40 text-[10px] sm:text-xs text-[#E5A853] font-mono">
-                      Click to expand ⤢
+                    {/* URL Bar showing deeptechsolutions.online */}
+                    <div className="flex-1 max-w-md mx-auto flex items-center justify-center gap-2 rounded-md bg-[#090B0E]/90 px-3 py-1 border border-white/10 text-[10px] sm:text-xs font-mono tracking-wide">
+                      <svg className="h-3 w-3 text-emerald-400 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+                        <path strokeLinecap="round" strokeLinejoin="round" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" />
+                      </svg>
+                      <span className="text-white font-medium truncate">https://deeptechsolutions.online</span>
+                    </div>
+
+                    {/* Live Badge */}
+                    <div className="hidden sm:flex items-center gap-1.5 rounded-full bg-emerald-500/10 px-2 py-0.5 text-[9px] text-emerald-400 font-mono border border-emerald-500/20 shrink-0">
+                      <span className="h-1.5 w-1.5 rounded-full bg-emerald-400 animate-pulse" />
+                      LIVE
                     </div>
                   </div>
 
@@ -106,9 +118,9 @@ export default function HeroSection() {
                   </div>
 
                   {/* Screen Bottom Bar */}
-                  <div className="absolute bottom-3 left-4 right-4 z-20 flex items-center justify-between text-[9px] sm:text-[11px] text-white/70 font-mono">
-                    <span>DEEP TECH SOLUTIONS</span>
-                    <span>HD • 60 FPS</span>
+                  <div className="absolute bottom-2 left-3 right-3 z-20 flex items-center justify-between text-[9px] sm:text-[11px] text-white/70 font-mono bg-black/40 backdrop-blur-sm px-3 py-1 rounded-md border border-white/5">
+                    <span className="text-amber-300 font-semibold">https://deeptechsolutions.online</span>
+                    <span>HD • 60 FPS ⤢</span>
                   </div>
                 </div>
               </div>

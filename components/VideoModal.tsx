@@ -87,21 +87,32 @@ export default function VideoModal({
             aria-modal="true"
             aria-label={videoTitle}
           >
-            {/* Modal Header */}
-            <div className="flex items-center justify-between border-b border-white/10 px-6 py-4 bg-[#191B1D]">
+            {/* Modal Header with Browser Address Bar */}
+            <div className="flex items-center justify-between border-b border-white/10 px-4 sm:px-6 py-3 bg-[#191B1D]">
               <div className="flex items-center gap-3">
-                <span className="flex h-2.5 w-2.5 rounded-full bg-[#C9A876] animate-pulse" />
-                <h3 className="text-sm font-semibold tracking-wide text-white font-mono uppercase">
-                  {videoTitle}
-                </h3>
+                {/* Browser dots */}
+                <div className="flex items-center gap-1.5">
+                  <span className="h-2.5 w-2.5 rounded-full bg-[#FF5F56]" />
+                  <span className="h-2.5 w-2.5 rounded-full bg-[#FFBD2E]" />
+                  <span className="h-2.5 w-2.5 rounded-full bg-[#27C93F]" />
+                </div>
               </div>
+
+              {/* URL Address Bar */}
+              <div className="flex items-center gap-2 rounded-md bg-[#0D0F12] px-4 py-1 border border-white/10 text-xs font-mono text-emerald-400">
+                <svg className="h-3.5 w-3.5 text-emerald-400 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+                  <path strokeLinecap="round" strokeLinejoin="round" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" />
+                </svg>
+                <span className="text-white font-semibold">https://deeptechsolutions.online</span>
+              </div>
+
               <button
                 onClick={onClose}
-                className="flex h-9 w-9 items-center justify-center rounded-full bg-white/5 text-white/70 transition-all hover:bg-white/15 hover:text-white"
+                className="flex h-8 w-8 items-center justify-center rounded-full bg-white/5 text-white/70 transition-all hover:bg-white/15 hover:text-white"
                 aria-label="Close showreel modal"
               >
                 <svg
-                  className="h-5 w-5"
+                  className="h-4 w-4"
                   fill="none"
                   viewBox="0 0 24 24"
                   stroke="currentColor"
@@ -198,8 +209,8 @@ export default function VideoModal({
             {/* ── END VIDEO CONTENT AREA ──────────────────────────────────────── */}
 
             {/* Modal Footer */}
-            <div className="flex items-center justify-between px-6 py-3 bg-[#111214] text-xs text-white/50 border-t border-white/5">
-              <span>Deep Tech Solutions • Web Dev & Lead Generation</span>
+            <div className="flex items-center justify-between px-6 py-3 bg-[#111214] text-xs text-white/50 border-t border-white/5 font-mono">
+              <span className="text-[#E5A853] font-medium">https://deeptechsolutions.online</span>
               <span>Press ESC or click outside to close</span>
             </div>
           </motion.div>
