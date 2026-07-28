@@ -18,7 +18,7 @@ import { motion, AnimatePresence } from "motion/react";
 //
 // Leave SHOWREEL_SRC as null to show the "Showreel coming soon" placeholder screen.
 //
-const SHOWREEL_SRC: string | null = null; // ← SWAP IN YOUR VIDEO PATH / URL HERE
+const SHOWREEL_SRC: string | null = "/videos/hero-intro.mp4"; // ← Updated with user video
 const SHOWREEL_TYPE: "video/mp4" | "youtube" = "video/mp4";
 
 // ─────────────────────────────────────────────────────────────────────────────

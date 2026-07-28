@@ -11,50 +11,6 @@ export default function HeroSection() {
   // Framer Motion spring transition configs
   const EASE = [0.16, 1, 0.3, 1] as const;
 
-  // Stagger variants for the project showcase cards inside the screen
-  const containerVariants = {
-    hidden: {},
-    visible: {
-      transition: {
-        staggerChildren: 0.15,
-        delayChildren: 0.3,
-      },
-    },
-  };
-
-  const cardVariantsLeft = {
-    hidden: { opacity: 0, x: -30, y: 20, rotate: 0 },
-    visible: {
-      opacity: 1,
-      x: 0,
-      y: 0,
-      rotate: -8,
-      transition: { duration: 0.8, ease: EASE },
-    },
-  };
-
-  const cardVariantsCenter = {
-    hidden: { opacity: 0, y: 30, scale: 0.95 },
-    visible: {
-      opacity: 1,
-      y: 0,
-      scale: 1,
-      rotate: 0,
-      transition: { duration: 0.8, ease: EASE },
-    },
-  };
-
-  const cardVariantsRight = {
-    hidden: { opacity: 0, x: 30, y: 20, rotate: 0 },
-    visible: {
-      opacity: 1,
-      x: 0,
-      y: 0,
-      rotate: 8,
-      transition: { duration: 0.8, ease: EASE },
-    },
-  };
-
   return (
     <>
       <section
@@ -108,224 +64,52 @@ export default function HeroSection() {
                 </div>
 
                 {/* ============================================================ */}
-                {/* SCREEN CONTENT — PROJECT SHOWCASE CARDS                     */}
+                {/* SCREEN CONTENT — 3D HERO INTRODUCTION VIDEO                  */}
                 {/* ============================================================ */}
-                <div className="relative h-full w-full bg-gradient-to-br from-[#0B132B] via-[#0D1B3E] to-[#070D1F] p-4 sm:p-8 md:p-10 flex flex-col justify-between overflow-hidden">
-                  
-                  {/* Subtle Screen Ambient Mesh */}
-                  <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_30%_20%,rgba(201,168,118,0.15),transparent_50%)]" />
-                  
-                  {/* Top Header inside Screen */}
-                  <div className="relative z-10 flex items-start justify-between">
-                    <div>
-                      {/* Category Headline in Italic Serif Font mixing White + Warm Gold */}
-                      <h2 className="font-serif italic text-xl sm:text-3xl md:text-4xl tracking-wide font-normal">
-                        <span className="text-white drop-shadow-sm">Recent </span>
-                        <span className="text-[#E5A853] drop-shadow-md">Work</span>
-                      </h2>
-                      <p className="text-[10px] sm:text-xs text-slate-400 tracking-wider uppercase font-mono mt-1">
-                        Web Dev & Lead Generation • Live Projects
-                      </p>
+                <div 
+                  className="relative h-full w-full bg-black cursor-pointer group overflow-hidden"
+                  onClick={() => setIsModalOpen(true)}
+                  title="Click to view full screen with sound"
+                >
+                  {/* Hero Video */}
+                  <video
+                    src="/videos/hero-intro.mp4"
+                    autoPlay
+                    loop
+                    muted
+                    playsInline
+                    className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-105"
+                  />
+
+                  {/* Subtle Gradient Overlay for Header & Footer readability */}
+                  <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-black/40" />
+
+                  {/* Top Bar Header inside Screen */}
+                  <div className="absolute top-3 left-4 right-4 z-20 flex items-center justify-between">
+                    <div className="flex items-center gap-2 rounded-full bg-black/50 backdrop-blur-md px-3 py-1 border border-white/10 text-[10px] sm:text-xs text-white/90 font-mono">
+                      <span className="h-2 w-2 rounded-full bg-emerald-400 animate-pulse" />
+                      3D Hero Intro
                     </div>
 
-                    {/* Live status badge inside screen */}
-                    <div className="hidden sm:flex items-center gap-2 rounded-full bg-white/5 backdrop-blur-md px-3 py-1 border border-white/10 text-[11px] text-white/80 font-mono">
-                      <span className="h-2 w-2 rounded-full bg-emerald-400 animate-ping" />
-                      Active Portfolio
+                    <div className="flex items-center gap-2 rounded-full bg-[#C9A876]/20 backdrop-blur-md px-3 py-1 border border-[#C9A876]/40 text-[10px] sm:text-xs text-[#E5A853] font-mono">
+                      Click to expand ⤢
                     </div>
                   </div>
 
-                  {/* Faint Dotted/Curved Connector Lines SVG */}
-                  <svg
-                    className="absolute inset-0 h-full w-full pointer-events-none stroke-white/15"
-                    aria-hidden="true"
-                  >
-                    <path
-                      d="M 150 140 Q 350 80 500 160 T 700 150"
-                      fill="none"
-                      strokeWidth="1.5"
-                      strokeDasharray="4 4"
-                    />
-                    <path
-                      d="M 220 240 Q 420 300 620 230"
-                      fill="none"
-                      strokeWidth="1"
-                      strokeDasharray="3 3"
-                      className="stroke-amber-400/20"
-                    />
-                  </svg>
-
-                  {/* 3 OVERLAPPING PROJECT CARDS FANNING OUT */}
-                  <motion.div
-                    className="relative z-20 grid grid-cols-3 gap-2 sm:gap-6 items-center justify-center mt-4 sm:mt-6 px-2 sm:px-6"
-                    variants={containerVariants}
-                    initial="hidden"
-                    animate="visible"
-                  >
-                    
-                    {/* CARD 1 (LEFT) — Naamakaran — Rotated -8deg */}
-                    <motion.div
-                      variants={cardVariantsLeft}
-                      className="group relative rounded-xl border border-white/15 bg-[#161B26]/90 p-2 sm:p-3 shadow-xl backdrop-blur-md transition-all duration-300 hover:z-30 hover:scale-105 hover:border-amber-400/40"
-                      style={{ zIndex: 10 }}
-                    >
-                      {/* Category Badge */}
-                      <div className="mb-1.5 flex items-center justify-between">
-                        <span className="inline-block rounded-md bg-white/10 px-1.5 py-0.5 text-[9px] sm:text-[11px] font-mono text-white/70">
-                          Live ✦
-                        </span>
-                        <span className="h-1.5 w-1.5 rounded-full bg-emerald-400" />
-                      </div>
-
-                      {/* Project Visual — Naamakaran branding */}
-                      {/*
-                        PLACEHOLDER VISUAL: Ideally swap this SVG for a real
-                        screenshot of naamakaran.com (e.g. <Image src="/naamakaran-preview.png" .../>).
-                        The screenshot file should be placed in /public/naamakaran-preview.png.
-                      */}
-                      <a
-                        href="https://naamakaran.com"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="block"
-                        tabIndex={-1}
-                      >
-                        <div className="relative aspect-[4/3] w-full overflow-hidden rounded-lg bg-gradient-to-br from-orange-950/60 via-[#1a0a00] to-slate-900 border border-orange-400/20">
-                          <svg className="h-full w-full" viewBox="0 0 200 150" fill="none">
-                            <rect width="200" height="150" fill="#1A0A00" />
-                            {/* Om symbol styled backdrop */}
-                            <circle cx="100" cy="65" r="44" fill="#2D1200" stroke="#C9A876" strokeWidth="1.5" strokeOpacity="0.4" />
-                            <text x="100" y="78" textAnchor="middle" fontSize="36" fill="#E5A853" fontFamily="serif" opacity="0.9">ॐ</text>
-                            {/* Site name */}
-                            <rect x="22" y="120" width="156" height="12" rx="4" fill="#2D1200" />
-                            <text x="100" y="130" textAnchor="middle" fontSize="8" fill="#C9A876" fontFamily="monospace" letterSpacing="1">NAAMAKARAN.COM</text>
-                          </svg>
-                          <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent" />
-                        </div>
-                      </a>
-
-                      {/* Card Bottom Label */}
-                      <div className="mt-2">
-                        <h4 className="text-[10px] sm:text-xs font-semibold text-white truncate">
-                          Naamakaran
-                        </h4>
-                        <p className="text-[8px] sm:text-[10px] text-orange-300/80 truncate">
-                          Multilingual Web App
-                        </p>
-                      </div>
-                    </motion.div>
-
-                    {/* CARD 2 (MIDDLE / TOP LAYER) — UniqueBusinessName.com — Rotated 0deg (Highest Z-Index) */}
-                    <motion.div
-                      variants={cardVariantsCenter}
-                      className="group relative rounded-xl border border-amber-400/30 bg-[#1C2333]/95 p-2 sm:p-3.5 shadow-2xl backdrop-blur-md transition-all duration-300 hover:z-30 hover:scale-105 hover:border-amber-400"
-                      style={{ zIndex: 20 }}
-                    >
-                      {/* Category Badge */}
-                      <div className="mb-1.5 flex items-center justify-between">
-                        <span className="inline-block rounded-md bg-[#C9A876]/20 px-2 py-0.5 text-[9px] sm:text-[11px] font-mono text-[#E5A853] font-medium">
-                          Live ✦
-                        </span>
-                        <span className="h-2 w-2 rounded-full bg-amber-400 animate-pulse" />
-                      </div>
-
-                      {/* Project Visual — UniqueBusinessName branding */}
-                      {/*
-                        PLACEHOLDER VISUAL: Ideally swap this SVG for a real
-                        screenshot of uniquebusinessname.com (e.g. <Image src="/uniquebiz-preview.png" .../>).
-                        The screenshot file should be placed in /public/uniquebiz-preview.png.
-                      */}
-                      <a
-                        href="https://uniquebusinessname.com"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="block"
-                        tabIndex={-1}
-                      >
-                        <div className="relative aspect-[4/3] w-full overflow-hidden rounded-lg bg-gradient-to-br from-amber-950/40 via-slate-900 to-indigo-950 border border-amber-400/20">
-                          <svg className="h-full w-full" viewBox="0 0 200 150" fill="none">
-                            <rect width="200" height="150" fill="#0B1020" />
-                            {/* Anti-gravity wheel concept */}
-                            <circle cx="100" cy="70" r="40" stroke="#E5A853" strokeWidth="2" fill="none" strokeDasharray="6 3" />
-                            <circle cx="100" cy="70" r="28" stroke="#C9A876" strokeWidth="1.5" fill="#1C1500" strokeOpacity="0.7" />
-                            <circle cx="100" cy="70" r="8" fill="#F59E0B" />
-                            {/* Spin lines */}
-                            <line x1="60" y1="70" x2="80" y2="70" stroke="#E5A853" strokeWidth="1.5" strokeOpacity="0.6" />
-                            <line x1="120" y1="70" x2="140" y2="70" stroke="#E5A853" strokeWidth="1.5" strokeOpacity="0.6" />
-                            <text x="100" y="128" textAnchor="middle" fontSize="7" fill="#C9A876" fontFamily="monospace" letterSpacing="0.5">UNIQUEBUSINESSNAME.COM</text>
-                          </svg>
-                          <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-transparent to-transparent" />
-                        </div>
-                      </a>
-
-                      {/* Card Bottom Label */}
-                      <div className="mt-2">
-                        <h4 className="text-[11px] sm:text-sm font-bold text-white truncate">
-                          UniqueBusinessName
-                        </h4>
-                        <p className="text-[9px] sm:text-[11px] text-amber-300/80 truncate">
-                          Interactive Web Tool
-                        </p>
-                      </div>
-                    </motion.div>
-
-                    {/* CARD 3 (RIGHT) — Coming Soon / Local Business Client Slot — Rotated +8deg */}
-                    {/*
-                      PLACEHOLDER CARD: This slot is reserved for a future dental/restaurant
-                      or local service business client project.
-                      When ready, replace the SVG below with:
-                        <Image src="/client-project-preview.png" alt="[Client Name]" fill className="object-cover" />
-                      and update the h4 and category tag accordingly.
-                    */}
-                    <motion.div
-                      variants={cardVariantsRight}
-                      className="group relative rounded-xl border border-white/10 bg-[#161B26]/80 p-2 sm:p-3 shadow-xl backdrop-blur-md transition-all duration-300 hover:z-30 hover:scale-105 hover:border-white/25"
-                      style={{ zIndex: 10 }}
-                    >
-                      {/* Category Badge */}
-                      <div className="mb-1.5 flex items-center justify-between">
-                        <span className="inline-block rounded-md bg-white/10 px-1.5 py-0.5 text-[9px] sm:text-[11px] font-mono text-white/50">
-                          Q4 2026
-                        </span>
-                        <span className="h-1.5 w-1.5 rounded-full bg-white/30" />
-                      </div>
-
-                      {/* Coming Soon Visual */}
-                      <div className="relative aspect-[4/3] w-full overflow-hidden rounded-lg bg-[#111418] border border-white/10 flex items-center justify-center">
-                        <svg className="h-full w-full" viewBox="0 0 200 150" fill="none">
-                          <rect width="200" height="150" fill="#111418" />
-                          {/* Generic local biz storefront icon */}
-                          <rect x="55" y="60" width="90" height="55" rx="4" stroke="#444" strokeWidth="1.5" fill="#1A1D22" />
-                          <rect x="70" y="80" width="24" height="35" rx="2" fill="#222629" stroke="#3D3F41" strokeWidth="1" />
-                          <rect x="106" y="85" width="26" height="18" rx="2" fill="#222629" stroke="#3D3F41" strokeWidth="1" />
-                          <rect x="55" y="50" width="90" height="14" rx="3" fill="#1E2022" stroke="#3D3F41" strokeWidth="1" />
-                          <path d="M 55 60 L 100 38 L 145 60" stroke="#444" strokeWidth="1.5" fill="none" />
-                          <text x="100" y="130" textAnchor="middle" fontSize="7.5" fill="#555" fontFamily="monospace" letterSpacing="1">COMING SOON</text>
-                        </svg>
-                        {/* Overlay dashed border effect */}
-                        <div className="absolute inset-0 rounded-lg border border-dashed border-white/10" />
-                        <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />
-                      </div>
-
-                      {/* Card Bottom Label */}
-                      <div className="mt-2">
-                        <h4 className="text-[10px] sm:text-xs font-semibold text-white/60 truncate">
-                          Local Business Client
-                        </h4>
-                        <p className="text-[8px] sm:text-[10px] text-slate-500 truncate">
-                          Lead-Gen Website
-                        </p>
-                      </div>
-                    </motion.div>
-
-                  </motion.div>
-
-                  {/* Screen Footer Status Line */}
-                  <div className="relative z-10 mt-2 flex items-center justify-between text-[9px] sm:text-[11px] text-white/40 font-mono border-t border-white/10 pt-2">
-                    <span>STATUS: ALL SYSTEMS OPTIMAL</span>
-                    <span>100% RESPONSIVE</span>
+                  {/* Center Play Button Overlay on Hover */}
+                  <div className="absolute inset-0 z-20 flex items-center justify-center pointer-events-none opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                    <div className="flex h-14 w-14 items-center justify-center rounded-full bg-[#C9A876] text-black shadow-2xl scale-95 group-hover:scale-100 transition-transform">
+                      <svg className="ml-1 h-6 w-6 fill-current" viewBox="0 0 24 24">
+                        <path d="M8 5v14l11-7z" />
+                      </svg>
+                    </div>
                   </div>
 
+                  {/* Screen Bottom Bar */}
+                  <div className="absolute bottom-3 left-4 right-4 z-20 flex items-center justify-between text-[9px] sm:text-[11px] text-white/70 font-mono">
+                    <span>DEEP TECH SOLUTIONS</span>
+                    <span>HD • 60 FPS</span>
+                  </div>
                 </div>
               </div>
 
