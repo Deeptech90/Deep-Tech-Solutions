@@ -71,17 +71,15 @@ export default function HeroSection() {
                   onClick={() => setIsModalOpen(true)}
                   title="Click to view full screen with sound"
                 >
-                  {/* Hero Video — Scaled and aligned to crop out top recorded browser bar */}
-                  <div className="relative h-full w-full overflow-hidden">
-                    <video
-                      src="/videos/hero-intro.mp4"
-                      autoPlay
-                      loop
-                      muted
-                      playsInline
-                      className="h-full w-full object-cover object-bottom scale-[1.10] origin-bottom transition-transform duration-700 group-hover:scale-[1.15]"
-                    />
-                  </div>
+                  {/* Hero Video */}
+                  <video
+                    src="/videos/hero-intro.mp4"
+                    autoPlay
+                    loop
+                    muted
+                    playsInline
+                    className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-105"
+                  />
 
                   {/* Subtle Gradient Overlay for Header & Footer readability */}
                   <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-black/30" />
