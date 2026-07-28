@@ -71,21 +71,23 @@ export default function HeroSection() {
                   onClick={() => setIsModalOpen(true)}
                   title="Click to view full screen with sound"
                 >
-                  {/* Hero Video */}
-                  <video
-                    src="/videos/hero-intro.mp4"
-                    autoPlay
-                    loop
-                    muted
-                    playsInline
-                    className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-105"
-                  />
+                  {/* Hero Video — Scaled and aligned to crop out top recorded browser bar */}
+                  <div className="relative h-full w-full overflow-hidden">
+                    <video
+                      src="/videos/hero-intro.mp4"
+                      autoPlay
+                      loop
+                      muted
+                      playsInline
+                      className="h-full w-full object-cover object-bottom scale-[1.10] origin-bottom transition-transform duration-700 group-hover:scale-[1.15]"
+                    />
+                  </div>
 
                   {/* Subtle Gradient Overlay for Header & Footer readability */}
-                  <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-black/40" />
+                  <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-black/30" />
 
-                  {/* Top Mock Browser Address Bar Overlay showing deeptechsolutions.online */}
-                  <div className="absolute top-2 left-3 right-3 z-30 flex items-center justify-between gap-2 rounded-lg bg-[#14161B]/85 backdrop-blur-md px-3 py-1.5 border border-white/15 shadow-xl">
+                  {/* Top Solid Browser Address Bar Overlay hiding any recorded top bar */}
+                  <div className="absolute top-0 left-0 right-0 z-30 flex items-center justify-between gap-2 bg-[#0B0D10] px-4 py-2 border-b border-white/10 shadow-lg">
                     {/* Window Controls Dots */}
                     <div className="flex items-center gap-1.5">
                       <span className="h-2.5 w-2.5 rounded-full bg-[#FF5F56]" />
@@ -94,7 +96,7 @@ export default function HeroSection() {
                     </div>
 
                     {/* URL Bar showing deeptechsolutions.online */}
-                    <div className="flex-1 max-w-md mx-auto flex items-center justify-center gap-2 rounded-md bg-[#090B0E]/90 px-3 py-1 border border-white/10 text-[10px] sm:text-xs font-mono tracking-wide">
+                    <div className="flex-1 max-w-md mx-auto flex items-center justify-center gap-2 rounded-md bg-[#16191E] px-3 py-1 border border-white/10 text-[10px] sm:text-xs font-mono tracking-wide">
                       <svg className="h-3 w-3 text-emerald-400 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
                         <path strokeLinecap="round" strokeLinejoin="round" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" />
                       </svg>

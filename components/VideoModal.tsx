@@ -194,7 +194,7 @@ export default function VideoModal({
               ) : (
                 /* ── SELF-HOSTED VIDEO MODE ─────────────────────────────────── */
                 <video
-                  className="h-full w-full object-cover"
+                  className="h-full w-full object-cover object-bottom scale-[1.08] origin-bottom"
                   src={SHOWREEL_SRC}
                   autoPlay
                   controls
