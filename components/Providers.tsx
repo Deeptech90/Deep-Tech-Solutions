@@ -3,6 +3,7 @@
 import { useEffect, useRef } from "react";
 import Lenis from "lenis";
 import CustomCursor from "./CustomCursor";
+import WhatsAppButton from "./WhatsAppButton";
 
 export default function Providers({ children }: { children: React.ReactNode }) {
   const lenisRef = useRef<Lenis | null>(null);
@@ -42,6 +43,7 @@ export default function Providers({ children }: { children: React.ReactNode }) {
     <>
       <CustomCursor />
       {children}
+      <WhatsAppButton />
     </>
   );
 }

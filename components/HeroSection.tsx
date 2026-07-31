@@ -135,13 +135,13 @@ export default function HeroSection() {
             {/* ============================================================ */}
             {/* 3. ROTATING "WATCH SHOWREEL" BUTTON                          */}
             {/* ============================================================ */}
-            <div className="absolute -bottom-8 -right-4 sm:bottom-2 sm:right-0 z-40">
+            <div className="absolute -bottom-6 right-0 sm:bottom-2 sm:right-0 z-40">
               <div className="group relative flex items-center justify-center">
                 
                 {/* Circular White Badge Container */}
                 <button
                   onClick={() => setIsModalOpen(true)}
-                  className="relative flex h-28 w-28 sm:h-36 sm:w-36 items-center justify-center rounded-full bg-white text-black shadow-[0_15px_40px_rgba(0,0,0,0.6)] transition-transform duration-300 hover:scale-110 focus:outline-none focus:ring-4 focus:ring-[#C9A876]/50"
+                  className="relative flex h-24 w-24 sm:h-36 sm:w-36 items-center justify-center rounded-full bg-white text-black shadow-[0_15px_40px_rgba(0,0,0,0.6)] transition-transform duration-300 hover:scale-110 focus:outline-none focus:ring-4 focus:ring-[#C9A876]/50"
                   aria-label="Watch Showreel Video"
                 >
                   {/* Rotating Circular Text SVG */}

@@ -17,6 +17,28 @@ export default function Navigation() {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
+  // Lock body scroll on mobile when menu is open & close menu on desktop resize
+  useEffect(() => {
+    if (mobileOpen) {
+      document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = "";
+    }
+
+    const handleResize = () => {
+      if (window.innerWidth >= 768 && mobileOpen) {
+        setMobileOpen(false);
+      }
+    };
+
+    window.addEventListener("resize", handleResize);
+
+    return () => {
+      document.body.style.overflow = "";
+      window.removeEventListener("resize", handleResize);
+    };
+  }, [mobileOpen]);
+
   const expertiseItems = [
     { title: "Web Development", desc: "Custom Next.js & React Applications", href: "#expertise" },
     { title: "AI Integration", desc: "LLM Agents & Automated Workflows", href: "#expertise" },

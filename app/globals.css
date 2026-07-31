@@ -1611,3 +1611,72 @@ button {
     display: none;
   }
 }
+
+/* ── Mobile Web Browser Optimizations ──────────────────────── */
+@media (max-width: 640px) {
+  /* Prevent horizontal scroll & disable tap highlight box */
+  html, body {
+    overflow-x: hidden;
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  /* Make tab lists horizontally scrollable with smooth touch drag */
+  .expertise__tabs {
+    overflow-x: auto;
+    flex-wrap: nowrap;
+    white-space: nowrap;
+    padding-bottom: 8px;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+  }
+  .expertise__tabs::-webkit-scrollbar {
+    display: none;
+  }
+
+  .expertise__tab {
+    flex: 0 0 auto;
+    padding: 10px 18px;
+  }
+
+  /* CTA banner actions stack vertically on small phone screens */
+  .cta-banner__actions {
+    flex-direction: column;
+    width: 100%;
+    gap: 12px;
+  }
+  .cta-banner__actions > * {
+    width: 100%;
+  }
+  .cta-banner__actions a,
+  .cta-banner__actions button {
+    width: 100%;
+    justify-content: center;
+  }
+
+  /* Mobile touch targets — minimum 44px tap area */
+  .nav__mobile a {
+    min-height: 48px;
+    display: flex;
+    align-items: center;
+    font-size: 1.05rem;
+    padding: 10px 4px;
+  }
+
+  .footer__social-link {
+    min-width: 44px;
+    min-height: 44px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  /* Card padding adjustments for mobile screens */
+  .about__card-main {
+    padding: 24px 20px;
+  }
+
+  .hero {
+    padding-top: 100px;
+    padding-bottom: 40px;
+  }
+}
