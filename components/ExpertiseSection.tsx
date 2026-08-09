@@ -50,6 +50,22 @@ const categories: Category[] = [
         isLive: true,
         liveUrl: "https://uniquebusinessname.com",
       },
+      {
+        image: "/dental-demo-preview.png",
+        title: "BrightSmile Dental Demo",
+        description:
+          "Modern dental practice & healthcare web application featuring interactive online booking, treatment showcases, and patient lead generation.",
+        isLive: true,
+        liveUrl: "https://deeptechdemo.vercel.app/",
+      },
+      {
+        image: "/law-firm-demo-preview.png",
+        title: "Acme Law Associates Demo",
+        description:
+          "Premium law firm website featuring practice area showcases, attorney profiles, case results, client reviews, and a free consultation booking flow.",
+        isLive: true,
+        liveUrl: "https://acme-law-associates.vercel.app",
+      },
     ],
     infoLabel: "Live Products",
     infoTitle: "Built, shipped, and growing",
@@ -71,10 +87,12 @@ const categories: Category[] = [
     id: "dental",
     label: "Dental & Healthcare",
     project: {
-      image: "/dental-hero.png",
-      title: "PureSmile Dental Studio",
+      image: "/dental-demo-preview.png",
+      title: "BrightSmile Dental & Cosmetics",
       description:
-        "A conversion-optimised dental website with online booking integration, local SEO, and after-hours appointment capture.",
+        "A conversion-optimised dental website with online booking, before/after smile gallery, patient testimonials, local SEO, and after-hours appointment capture.",
+      isLive: true,
+      liveUrl: "https://deeptechdemo.vercel.app/",
     },
     infoLabel: "Healthcare Websites",
     infoTitle: "Turning searches into booked appointments",
@@ -85,6 +103,29 @@ const categories: Category[] = [
       "Appointment booking widget integration",
       "Trust-building patient testimonial layouts",
       "Mobile-first — most bookings happen on phone",
+    ],
+  },
+  {
+    id: "law",
+    label: "Legal & Law Firms",
+    project: {
+      image: "/law-firm-demo-preview.png",
+      title: "Acme Law Associates",
+      description:
+        "A trust-first law firm website with structured practice area pages, attorney bios, case results, client testimonials, and a free consultation CTA — built to rank and convert.",
+      isLive: true,
+      liveUrl: "https://acme-law-associates.vercel.app",
+    },
+    infoLabel: "Legal Websites",
+    infoTitle: "Win clients before the first call",
+    infoDesc:
+      "People searching for legal help need to trust you immediately. We build law firm websites that establish authority through attorney credibility, practice area clarity, and frictionless consultation booking — so you win the client before you even speak.",
+    features: [
+      "Practice area landing pages for SEO",
+      "Attorney profiles that build authority",
+      "Case results & testimonials for trust",
+      "Free consultation CTA & lead capture",
+      "Mobile-first — most searches happen on phone",
     ],
   },
   {
@@ -523,14 +564,40 @@ export default function ExpertiseSection() {
                       </li>
                     ))}
                   </ul>
-                  <a
-                    href="#contact"
-                    className="btn btn-primary"
-                    id={`expertise-cta-${current.id}`}
-                    style={{ marginTop: 32 }}
-                  >
-                    Discuss your project
-                  </a>
+                  <div style={{ display: "flex", flexDirection: "column", gap: 10, marginTop: 32 }}>
+                    {current.project?.isLive && current.project?.liveUrl && (
+                      <a
+                        href={current.project.liveUrl}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="btn btn-ghost"
+                        id={`live-link-${current.id}`}
+                        style={{ justifyContent: "space-between" }}
+                      >
+                        <span>View Live Demo</span>
+                        <svg
+                          width="14"
+                          height="14"
+                          viewBox="0 0 24 24"
+                          fill="none"
+                          stroke="currentColor"
+                          strokeWidth="2.5"
+                          aria-hidden="true"
+                        >
+                          <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6" />
+                          <polyline points="15 3 21 3 21 9" />
+                          <line x1="10" y1="14" x2="21" y2="3" />
+                        </svg>
+                      </a>
+                    )}
+                    <a
+                      href="#contact"
+                      className="btn btn-primary"
+                      id={`expertise-cta-${current.id}`}
+                    >
+                      Discuss your project
+                    </a>
+                  </div>
                 </FadeUp>
               </div>
             )}
