@@ -46,6 +46,13 @@ export default function Navigation() {
     { title: "Mobile Experience", desc: "Responsive Web & Cross-Platform Apps", href: "#expertise" },
   ];
 
+  const navLinks = [
+    { label: "Work", href: "#work", id: "nav-link-work" },
+    { label: "Services", href: "#services", id: "nav-link-services" },
+    { label: "About", href: "#about", id: "nav-link-about" },
+    { label: "Pricing", href: "#pricing", id: "nav-link-pricing" },
+  ];
+
   const mobileMenuVariants = {
     hidden: {
       opacity: 0,
@@ -92,11 +99,13 @@ export default function Navigation() {
 
           {/* Desktop Links */}
           <ul className="nav__links" role="list">
-            <li>
-              <a href="#work" id="nav-link-work">
-                Work
-              </a>
-            </li>
+            {navLinks.map((link) => (
+              <li key={link.id}>
+                <a href={link.href} id={link.id}>
+                  {link.label}
+                </a>
+              </li>
+            ))}
 
             {/* Expertise Link with Dropdown Chevron Indicator */}
             <li
@@ -156,31 +165,15 @@ export default function Navigation() {
                 )}
               </AnimatePresence>
             </li>
-
-            <li>
-              <a href="#services" id="nav-link-services">
-                Services
-              </a>
-            </li>
-            <li>
-              <a href="#about" id="nav-link-about">
-                About
-              </a>
-            </li>
-            <li>
-              <a href="#contact" id="nav-link-contact">
-                Contact
-              </a>
-            </li>
           </ul>
 
-          {/* Desktop CTA */}
+          {/* Desktop CTA — Primary booking funnel entry */}
           <a
-            href="#contact"
+            href="/book"
             className="btn btn-primary nav__cta"
-            id="nav-cta-contact"
+            id="nav-cta-book"
           >
-            Get In Touch
+            📅 Book Free Consultation
           </a>
 
           {/* Mobile Hamburger */}
@@ -255,20 +248,20 @@ export default function Navigation() {
               About
             </motion.a>
             <motion.a
-              href="#contact"
+              href="#pricing"
               onClick={() => setMobileOpen(false)}
               variants={mobileLinkVariants}
             >
-              Contact
+              Pricing
             </motion.a>
             <motion.a
-              href="#contact"
+              href="/book"
               className="btn btn-primary"
               onClick={() => setMobileOpen(false)}
               id="nav-mobile-cta"
               variants={mobileLinkVariants}
             >
-              Get In Touch
+              📅 Book Free Consultation
             </motion.a>
           </motion.div>
         )}

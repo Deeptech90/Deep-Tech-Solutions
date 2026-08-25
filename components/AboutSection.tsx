@@ -15,9 +15,9 @@ export default function AboutSection() {
     : staggerChildVariants;
 
   const advantages = [
+    "Direct access to the principal engineer — no middlemen",
     "Fast turnaround — 2–5 days for a first draft",
-    "One point of contact, always",
-    "Competitive pricing vs. local agencies",
+    "Zero agency markup — competitive transparent pricing",
     "Flexible timezone coverage (IST/GMT/EST overlap)",
   ];
 
@@ -103,11 +103,11 @@ export default function AboutSection() {
               <motion.div variants={childVariants}>
                 <MagneticButton>
                   <a
-                    href="#contact"
+                    href="/book"
                     className="btn btn-primary"
                     id="about-cta"
                   >
-                    Start a conversation
+                    📅 Book a Strategy Session
                   </a>
                 </MagneticButton>
               </motion.div>

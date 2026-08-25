@@ -4,12 +4,6 @@ import { motion, useReducedMotion } from "motion/react";
 import FadeUp from "@/components/motion/FadeUp";
 import MagneticButton from "@/components/motion/MagneticButton";
 
-// ─── CONFIGURATION ───────────────────────────────────────────────────────────
-// Replace CALENDLY_URL with your real scheduling link before going live.
-// Example: "https://calendly.com/yourname/consult"
-const CALENDLY_URL = "https://calendly.com/YOUR_USERNAME/consult";
-// ─────────────────────────────────────────────────────────────────────────────
-
 export default function CtaBanner() {
   return (
     <section className="cta-banner" id="contact" aria-label="Contact call to action">
@@ -17,25 +11,34 @@ export default function CtaBanner() {
       <div className="cta-banner__inner">
         <FadeUp>
           <p className="section-label" style={{ marginBottom: 20 }}>
-            Let&apos;s work together
+            Turn local search into booked appointments
           </p>
         </FadeUp>
         <FadeUp delay={0.1}>
           <h2 className="cta-banner__title">
-            Ready to get more customers
+            Ready to convert more visitors
             <br />
-            from your <span className="text-gradient">website?</span>
+            into paying <span className="text-gradient">customers?</span>
           </h2>
         </FadeUp>
         <FadeUp delay={0.2}>
           <p className="cta-banner__desc">
-            Send me a brief, or just say hello. I&apos;ll reply within one
-            business day with honest feedback on whether I&apos;m the right fit
-            — and a free preview if your project is a good match.
+            Book a free 30-minute strategy session. You&apos;ll speak directly with the
+            principal developer — no sales reps, no account managers. Walk away with a
+            concrete action plan for your website, local SEO, and lead acquisition system.
           </p>
         </FadeUp>
         <FadeUp delay={0.3}>
           <div className="cta-banner__actions">
+            <MagneticButton>
+              <a
+                href="/book"
+                className="btn btn-primary"
+                id="cta-book-primary"
+              >
+                📅 Book Free Strategy Session
+              </a>
+            </MagneticButton>
             <MagneticButton>
               <a
                 href={`https://wa.me/${(process.env.NEXT_PUBLIC_WHATSAPP_NUMBER || "918929490433").replace(/[^0-9]/g, "")}`}
@@ -75,17 +78,6 @@ export default function CtaBanner() {
                   <path d="m22 7-10 7L2 7" />
                 </svg>
                 Email Us
-              </a>
-            </MagneticButton>
-            <MagneticButton>
-              <a
-                href={CALENDLY_URL}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="btn btn-ghost"
-                id="cta-calendly"
-              >
-                Book a Free Consultation
               </a>
             </MagneticButton>
           </div>
