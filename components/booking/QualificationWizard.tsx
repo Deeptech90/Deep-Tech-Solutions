@@ -12,7 +12,7 @@ import CalEmbedWrapper from './CalEmbedWrapper';
 // Update NEXT_PUBLIC_CAL_LINK in .env.local to override, e.g.
 // NEXT_PUBLIC_CAL_LINK=yourname/30min
 const CAL_LINK =
-  process.env.NEXT_PUBLIC_CAL_LINK || 'deeptechsolutions/30min-consultation';
+  process.env.NEXT_PUBLIC_CAL_LINK || 'deeptech';
 // ──────────────────────────────────────────────────────────────────────────────
 
 const EASE: [number, number, number, number] = [0.16, 1, 0.3, 1];

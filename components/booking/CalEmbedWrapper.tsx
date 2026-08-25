@@ -22,10 +22,16 @@ export default function CalEmbedWrapper({ calLink, formData }: CalEmbedWrapperPr
     })();
   }, []);
 
+  // Normalize Cal link in case a full URL was provided (e.g., https://cal.com/username/30min -> username/30min)
+  const normalizedCalLink = calLink
+    .replace(/^https?:\/\/(www\.|app\.)?cal\.com\//i, '')
+    .replace(/^\/+|\/+$/g, '')
+    .trim();
+
   return (
     <div className="cal-embed-shell">
       <Cal
-        calLink={calLink}
+        calLink={normalizedCalLink}
         style={{ width: '100%', height: '100%', minHeight: '680px' }}
         config={{
           name: formData.fullName,
