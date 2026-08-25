@@ -61,7 +61,7 @@ export default function CtaBanner() {
             </MagneticButton>
             <MagneticButton>
               <a
-                href="mailto:hello@deeptechsolutions.digital"
+                href="mailto:hello@deeptechsolutions.online"
                 className="btn btn-ghost"
                 id="cta-email"
               >

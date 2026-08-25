@@ -134,10 +134,10 @@ export default function Footer() {
                   ✉
                 </span>
                 <a
-                  href="mailto:hello@deeptechsolutions.digital"
+                  href="mailto:hello@deeptechsolutions.online"
                   id="footer-email"
                 >
-                  hello@deeptechsolutions.digital
+                  hello@deeptechsolutions.online
                 </a>
               </div>
               <div
