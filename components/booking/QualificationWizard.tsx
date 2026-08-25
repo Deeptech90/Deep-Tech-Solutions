@@ -78,23 +78,23 @@ const INDUSTRY_OPTIONS = [
 const BUDGET_OPTIONS = [
   {
     id: 'under_500' as const,
-    label: '< $500',
-    desc: 'Standard setup or initial audit',
+    label: '$199 – $299',
+    desc: 'Launch System or focused landing setup',
   },
   {
     id: '500_1000' as const,
-    label: '$500 – $1,000',
-    desc: 'Growth website foundation',
+    label: '$299 – $499',
+    desc: 'Growth Engine & lead capture pipeline',
   },
   {
     id: '1000_2500' as const,
-    label: '$1,000 – $2,500',
-    desc: 'Full custom site + lead acquisition engine',
+    label: '$499+',
+    desc: 'Complete Scale System & full local SEO',
   },
   {
     id: 'above_2500' as const,
-    label: '$2,500+',
-    desc: 'Enterprise deployment or recurring retainer',
+    label: 'Custom Enterprise / Retainer',
+    desc: 'Multi-location deployment or ongoing retainer',
   },
 ] as const;
 
