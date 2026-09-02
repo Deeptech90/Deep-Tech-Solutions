@@ -20,6 +20,7 @@ export default function PricingSection() {
       name: "Launch System",
       amount: "$199",
       amountNote: "Starting from — essential setup & fast launch",
+      amountEU: "~€185 / £160",
       featured: false,
       features: [
         "Custom design (up to 5 pages)",
@@ -40,6 +41,7 @@ export default function PricingSection() {
       name: "Growth Engine",
       amount: "$299",
       amountNote: "Starting from — scoped to your market",
+      amountEU: "~€280 / £240",
       featured: true,
       badgeText: "Most popular",
       features: [
@@ -61,6 +63,7 @@ export default function PricingSection() {
       name: "Complete Scale System",
       amount: "$499",
       amountNote: "Full custom build, local SEO & booking engine",
+      amountEU: "~€465 / £400",
       featured: false,
       features: [
         "Everything in Growth Engine",
@@ -101,6 +104,18 @@ export default function PricingSection() {
                 All prices shown are starting points. Every project gets a custom
                 quote based on your scope after an initial call or brief.
               </p>
+              <p
+                style={{
+                  maxWidth: 420,
+                  marginTop: 10,
+                  color: "var(--color-text-3)",
+                  fontSize: "0.8rem",
+                  lineHeight: 1.6,
+                  letterSpacing: "0.03em",
+                }}
+              >
+                GDPR-compliant &nbsp;·&nbsp; Transparent pricing &nbsp;·&nbsp; No long-term lock-in &nbsp;·&nbsp; Billed in USD
+              </p>
             </FadeUp>
           </div>
         </div>
@@ -126,6 +141,18 @@ export default function PricingSection() {
                   <span className="pricing-card__amount">{tier.amount}</span>
                 </div>
                 <p className="pricing-card__note">{tier.amountNote}</p>
+                {tier.amountEU && (
+                  <p
+                    style={{
+                      fontSize: "0.72rem",
+                      color: "var(--color-text-3)",
+                      marginTop: 4,
+                      letterSpacing: "0.02em",
+                    }}
+                  >
+                    {tier.amountEU} depending on exchange rate
+                  </p>
+                )}
               </div>
 
               <div className="pricing-card__body">

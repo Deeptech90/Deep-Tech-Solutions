@@ -4,63 +4,411 @@ import { notFound } from "next/navigation";
 
 // ─── PUBLISHED POSTS ──────────────────────────────────────────────────────────
 // To add a post:
-//   1. Uncomment (or copy) an entry in the `posts` map below
-//   2. Fill in title, date, category, and content (raw HTML or swap to MDX)
-//   3. The slug key becomes the URL: /blog/local-seo-guide etc.
-// The build will automatically pre-render any entry added here.
+//   1. Add an entry to the `posts` map below
+//   2. Set comingSoon: false, add a real date and full content HTML
+//   3. Add the slug to the PUBLISHED_POSTS list in app/blog/page.tsx
+//   4. Update InsightsSection.tsx to set comingSoon: false + slug
 // ─────────────────────────────────────────────────────────────────────────────
+
+const SITE_URL = "https://www.deeptechsolutions.online";
+
 
 type Post = {
   title: string;
   date: string;
+  isoDate: string;
   category: string;
   readTime: string;
-  content: string; // plain HTML; swap to an MDX import if you prefer
+  description: string;
+  content: string;
   comingSoon?: boolean;
 };
 
 const posts: Record<string, Post> = {
-  // ── Add live posts below this line ─────────────────────────────────────────
+  // ── Published posts ─────────────────────────────────────────────────────────
 
-  // "local-seo-guide": {
-  //   title: "Why Your Google Business Profile Is Your Most Powerful Local Marketing Tool",
-  //   date: "2026-08-01",
-  //   category: "Local SEO",
-  //   readTime: "5 min read",
-  //   content: "<p>Your post content here...</p>",
-  // },
-
-  // ── Placeholder entries (renders a "coming soon" page, not a 404) ──────────
-  // These exist so the static export has at least one slug to pre-render.
-  // Remove them (or overwrite with real content) once posts are live.
   "local-seo-guide": {
     title: "Why Your Google Business Profile Is Your Most Powerful Local Marketing Tool",
-    date: "Coming soon",
+    date: "1 September 2026",
+    isoDate: "2026-09-01",
     category: "Local SEO",
     readTime: "5 min read",
-    content: "",
-    comingSoon: true,
+    description:
+      "Most local businesses set up their GBP once and forget it. Here's why that's costing you calls, walk-ins, and revenue — and exactly what to do instead.",
+    content: `
+<p>Your Google Business Profile (GBP) is the single most visible piece of online real estate your local business owns — and it costs nothing to use. Yet most businesses treat it as a one-time setup task: claim the listing, add opening hours, upload a photo or two, and move on.</p>
+
+<p>That's a mistake that's actively costing you customers.</p>
+
+<h2>Why GBP Matters More Than Your Website for Local Searches</h2>
+
+<p>When someone searches "dentist near me" or "best Indian restaurant in [city]," they see the <strong>Local Pack</strong> — the map with three business listings — before they see any websites. That Local Pack is powered entirely by Google Business Profile data.</p>
+
+<p>Here's the uncomfortable truth: a mediocre website with an excellent GBP will outperform a beautiful website with a neglected GBP, every single time in local search.</p>
+
+<p>The three factors Google uses to rank Local Pack results are:</p>
+
+<ol>
+  <li><strong>Relevance</strong> — does your profile match what the searcher needs?</li>
+  <li><strong>Distance</strong> — how close is your business to the searcher?</li>
+  <li><strong>Prominence</strong> — how well-known and trusted does Google think you are?</li>
+</ol>
+
+<p>You can't control distance. But relevance and prominence are entirely within your control — and most businesses aren't doing the work to optimise either.</p>
+
+<h2>The 7 Things Most Businesses Get Wrong</h2>
+
+<h3>1. Incomplete Business Category Selection</h3>
+
+<p>Google lets you choose a primary category and multiple secondary categories. Most businesses choose one broad primary category and leave it there.</p>
+
+<p>If you run a dental clinic, your primary category might be "Dentist." But if you also offer teeth whitening, Invisalign, and emergency appointments, those should be reflected in your secondary categories: "Cosmetic Dentist," "Orthodontist," "Emergency Dental Service."</p>
+
+<p>Each secondary category is another set of search queries you can rank for. Leaving them blank is leaving money on the table.</p>
+
+<h3>2. Sparse Business Description</h3>
+
+<p>You get 750 characters for your business description. Use them. Write it in plain language that your customers would use, not corporate-speak. Include your key services, your target customer, and your location naturally — but don't keyword-stuff.</p>
+
+<p>A good test: would your description answer the question "why should I choose this business over the one next door?" If not, rewrite it.</p>
+
+<h3>3. No Google Posts</h3>
+
+<p>Google Posts are mini-announcements that appear directly on your GBP. They disappear after seven days (or when an event ends), which is exactly why most businesses ignore them — it feels like effort for something temporary.</p>
+
+<p>But consistency with Posts sends a strong "active business" signal to Google. Aim for at least one post per week. Ideas: a weekly special, a new service, a staff spotlight, a response to a common question, or a seasonal offer.</p>
+
+<h3>4. Ignoring the Q&A Section</h3>
+
+<p>Anyone can ask — and anyone can answer — questions on your GBP listing. If you're not monitoring this, a competitor or a misinformed customer could be answering questions about your business incorrectly.</p>
+
+<p>Better strategy: pre-populate the Q&A section yourself. Think of the five most common questions you get asked (price ranges, parking availability, whether you take NHS patients, how to book an appointment) and add them yourself, then answer them yourself. This also helps with search visibility since Google indexes Q&A content.</p>
+
+<h3>5. Not Responding to Reviews</h3>
+
+<p>Responding to reviews — both positive and negative — improves your local ranking and builds customer trust. Google has confirmed that responding to reviews is a ranking factor.</p>
+
+<p>For positive reviews: a brief, genuine, personalised response. Avoid copy-pasting the same "Thanks for your review!" template — it reads as automated and undermines trust.</p>
+
+<p>For negative reviews: respond within 24–48 hours. Acknowledge the issue, apologise without being defensive, and offer to resolve it offline. Never argue publicly — even if the customer is wrong. How you handle complaints is often more trust-building than the complaint itself.</p>
+
+<h3>6. Low-Quality or Outdated Photos</h3>
+
+<p>Listings with photos receive 42% more requests for directions and 35% more click-throughs to websites than listings without photos, according to Google's own data.</p>
+
+<p>Upload photos regularly — Google rewards listings that are active. For a restaurant, this means food photography, the dining room, the team, the kitchen. For a dental clinic: reception area, treatment room (clean and welcoming, not clinical-looking), and happy team photos. Avoid stock photography; Google can detect it and it reduces trust.</p>
+
+<h3>7. Not Using the "Products" or "Services" Sections</h3>
+
+<p>GBP lets you list individual products and services with names, descriptions, and prices (or price ranges). Most businesses either skip this entirely or add a couple of generic entries.</p>
+
+<p>Build these out fully. Each service listing is a micro-landing page that can rank for specific searches. A dental clinic listing "teeth whitening — from £299" or a restaurant listing its most popular dishes is giving Google highly specific content to serve to searchers with high intent.</p>
+
+<h2>The Compounding Effect of GBP Signals</h2>
+
+<p>Here's what makes GBP optimisation so powerful: the effects compound. Reviews lead to more visibility, which leads to more customers, which leads to more reviews. Active posts signal freshness, which improves ranking, which drives more traffic. Detailed service listings capture more long-tail searches, which bring in higher-intent visitors.</p>
+
+<p>Unlike paid advertising, which stops working the moment you stop paying, a well-maintained GBP keeps generating leads 24/7 at zero ongoing cost.</p>
+
+<h2>The Maintenance Rhythm That Works</h2>
+
+<p>Sustainable GBP management doesn't require hours of effort. Here's the weekly and monthly routine I recommend to clients:</p>
+
+<p><strong>Weekly (15–20 minutes):</strong></p>
+<ul>
+  <li>Publish one Google Post (a special, an offer, or a tip)</li>
+  <li>Respond to any new reviews</li>
+  <li>Check the Q&A section for new questions</li>
+</ul>
+
+<p><strong>Monthly (30–45 minutes):</strong></p>
+<ul>
+  <li>Add 3–5 fresh photos</li>
+  <li>Review your business hours for accuracy (especially holidays)</li>
+  <li>Check your insights: which searches are driving impressions, which photos are getting views</li>
+  <li>Update your services or products if anything has changed</li>
+</ul>
+
+<h2>One More Thing: Citations and Consistency</h2>
+
+<p>Your NAP — Name, Address, Phone number — must be <em>exactly</em> consistent across every online directory: your website, GBP, Facebook, Yelp, TripAdvisor, local directories. Even small inconsistencies (e.g., "St." vs "Street", or different phone number formats) erode Google's confidence in your listing and hurt your local ranking.</p>
+
+<p>Run a citation audit. Fix inconsistencies. Then build new citations on relevant directories in your industry and location.</p>
+
+<h2>The Bottom Line</h2>
+
+<p>Your Google Business Profile is the highest-ROI marketing investment available to a local business. It's free, it's high-visibility, and most of your competitors are doing it wrong.</p>
+
+<p>If you're not actively managing yours, you're giving those customers to someone else.</p>
+
+<p>Need help setting up or auditing your GBP — or want a full local SEO strategy built around it? <a href="/book">Book a free strategy session</a> and we'll walk through your current setup together.</p>
+    `.trim(),
   },
+
   "restaurant-delivery-apps": {
     title: "How Restaurants Can Reduce Dependence on Delivery Apps (And Keep More Revenue)",
-    date: "Coming soon",
+    date: "1 September 2026",
+    isoDate: "2026-09-01",
     category: "Restaurant Marketing",
     readTime: "7 min read",
-    content: "",
-    comingSoon: true,
+    description:
+      "Third-party platforms take 15–30% of every order. Direct online ordering isn't complicated — and it pays for itself fast. Here's a practical guide to shifting the balance.",
+    content: `
+<p>If your restaurant takes delivery orders through Uber Eats, Deliveroo, Just Eat, or DoorDash, you already know the economics aren't pretty. Commission rates range from 15% to 30% per order, sometimes higher on premium placement packages. On a £25 order with a 30% commission, you're keeping £17.50 before food costs, staff, and overhead.</p>
+
+<p>The platforms will argue they bring you customers you wouldn't otherwise have. And that's partially true — especially in your early days. But once your restaurant has an established customer base, continuing to route all your online orders through a third party is like paying rent on a shop you already own.</p>
+
+<p>This post is about how to strategically shift a meaningful portion of your orders to direct channels — without abandoning the delivery apps entirely.</p>
+
+<h2>Understanding the Actual Cost</h2>
+
+<p>Let's run the numbers properly. Suppose your restaurant does £10,000 in delivery sales per month, all through third-party apps at an average 25% commission rate. You're paying £2,500 per month — £30,000 per year — for the privilege.</p>
+
+<p>What if you shifted even 30% of that volume to direct orders? That's £3,000/month in direct orders. Even if your direct ordering system costs £100/month to operate and you spend another £200/month nudging customers toward it, you're still saving roughly £550/month versus the app commission rate on that volume. Over a year, that's £6,600 retained.</p>
+
+<p>That's not theoretical — that's the actual math for a mid-size independent restaurant. The savings scale with your volume.</p>
+
+<h2>Why Most Restaurants Don't Shift (And Why Those Reasons Are Surmountable)</h2>
+
+<p>The three most common objections I hear from restaurant owners:</p>
+
+<ol>
+  <li><strong>"Our customers won't bother to order directly — they're used to the app."</strong></li>
+  <li><strong>"Setting up a direct ordering system sounds complicated."</strong></li>
+  <li><strong>"We'd lose the discovery traffic the apps bring."</strong></li>
+</ol>
+
+<p>Each of these is real — but none of them are insurmountable.</p>
+
+<h3>On customer behaviour</h3>
+
+<p>Your regulars — the customers who've already discovered you and love your food — are the most likely to order directly, especially if there's an incentive. A 10% discount for ordering direct, or a loyalty program that only applies to direct orders, shifts the economics decisively in the customer's mind. They're not ordering direct out of altruism; they're doing it because you've given them a reason to.</p>
+
+<p>You don't need to convert every customer. Converting your top 20% of regulars to direct ordering can account for a disproportionate share of your revenue shift.</p>
+
+<h3>On technical complexity</h3>
+
+<p>Direct ordering systems have become dramatically simpler. Solutions like Square Online, Toast, Flipdine, and dedicated WooCommerce plugins integrate with your existing website and handle the customer experience, payment processing, and order management. Setup time is measured in days, not months.</p>
+
+<p>If your website doesn't currently support ordering, adding a dedicated ordering page isn't a major rebuild — it's an addition to what you already have.</p>
+
+<h3>On discovery</h3>
+
+<p>This is the most legitimate concern. The apps do bring in new customers who wouldn't have found you otherwise. The answer isn't to leave the apps — it's to use the apps for discovery and your own channels for retention.</p>
+
+<p>Think of it this way: the first order comes through Deliveroo. Every subsequent order from that customer should come direct. The app paid for the acquisition; your retention systems do the rest.</p>
+
+<h2>Five Practical Strategies That Work</h2>
+
+<h3>1. Put a Direct Ordering CTA Inside Every Delivery Package</h3>
+
+<p>This is the highest-leverage, lowest-cost thing you can do today. Every delivery order that goes out should include a physical insert: a card, a sticker on the bag, or a printed flyer that says something like:</p>
+
+<blockquote>
+  <p>"Loved your meal? Order direct at [yourwebsite.com] and get 10% off your next order. No apps, no extra fees — just great food."</p>
+</blockquote>
+
+<p>This reaches customers at peak receptiveness — they're eating your food right now and they liked it enough to order from you. The barrier to scan a QR code and save the link is genuinely low.</p>
+
+<h3>2. Build a Simple Loyalty Program for Direct Orders Only</h3>
+
+<p>A basic loyalty mechanic — stamp cards, points, or a simple "5th order free" system — creates ongoing incentive to order direct. Importantly, this only applies to direct orders, which makes the distinction tangible for customers.</p>
+
+<p>Digital loyalty programs (via apps like Stamp Me, LoyaltyLion, or even a simple email-based system) make this trackable and scalable. But even physical stamp cards work if you're willing to honour them.</p>
+
+<h3>3. Create a Direct Ordering Incentive for Your Social Audience</h3>
+
+<p>If you have even a modest Instagram or Facebook following, a monthly "direct order exclusive" offer works well — a free drink with every order, a discounted combo, early access to a new dish. Promote it on social, send it via email if you collect customer emails, and make it clear that this deal is only available when ordering through your website.</p>
+
+<p>This trains your audience to think of your direct channel as the premium experience — not the apps.</p>
+
+<h3>4. Optimise Your Google Business Profile for Direct Orders</h3>
+
+<p>Your GBP listing lets you add a "Order Food" or "Order Online" button that links directly to your ordering page. If that button currently points to Uber Eats, change it to your direct ordering system. This is free and takes five minutes.</p>
+
+<p>Customers who find you via Google and want to order are high-intent and often don't have a preference for which platform they use — they just want the food. Removing friction between that intent and your direct ordering page captures a significant portion of this traffic.</p>
+
+<h3>5. Run a "Direct Order Week" Campaign Once Per Quarter</h3>
+
+<p>A concentrated promotional push — where ordering direct gets a meaningful discount or bonus for seven days — creates a habit-forming moment. First-time direct orderers who have a good experience often continue ordering direct by default, since the habit is established and the app is no longer the path of least resistance.</p>
+
+<p>Pair this with a follow-up email or SMS after the first direct order: "Thanks for ordering direct — here's a code for 10% off your next one." Converting the first order into a second direct order is the critical step.</p>
+
+<h2>Building the Foundation: What You Actually Need</h2>
+
+<p>To run direct online orders effectively, you need three things:</p>
+
+<ol>
+  <li><strong>An ordering page</strong> — either a dedicated ordering platform integrated with your website, or a standalone solution. Should be mobile-first, fast-loading, and frictionless.</li>
+  <li><strong>A payment processor</strong> — Stripe is the standard choice for flexibility and cost. Square works well if you're already using their POS system.</li>
+  <li><strong>A way to capture customer contact details</strong> — email or phone number at checkout. This is how you re-market to direct customers and build genuine CRM data that you own (unlike on the delivery apps, where the customer relationship belongs to the platform).</li>
+</ol>
+
+<p>That third point is more valuable than it might initially appear. When you have a customer's email and order history, you can reach them directly — for promotions, new menu launches, seasonal specials. The apps have that data about your customers; you don't. Direct ordering is how you reclaim it.</p>
+
+<h2>The Right Balance</h2>
+
+<p>I'm not suggesting you delete your Deliveroo account. The delivery apps are still valuable for discovery, especially if you're newer or expanding to a new area. What I am suggesting is that you treat them as top-of-funnel acquisition tools — and build your own systems to convert that first-time app customer into a long-term direct customer.</p>
+
+<p>Aim for 60–70% of your regular customer orders to come direct within 12 months. At that split, you've dramatically reduced your commission exposure while still benefiting from app-driven discovery.</p>
+
+<h2>Getting Started</h2>
+
+<p>The fastest path to your first direct orders is usually:</p>
+
+<ol>
+  <li>Set up a basic ordering page (takes 2–5 days with the right tools)</li>
+  <li>Add a "Order Direct" button to your GBP and social bios</li>
+  <li>Print and include an insert in all delivery packages with a first-order discount</li>
+  <li>Tell your regulars — via Instagram story, WhatsApp status, or in-person</li>
+</ol>
+
+<p>If you'd like help setting up a direct ordering system that integrates with your existing website and marketing, <a href="/book">book a free strategy session</a> — I'll walk you through the options that make sense for your setup and volume.</p>
+    `.trim(),
   },
+
   "dental-website-structure": {
     title: "The 5-Page Dental Website Structure That Consistently Converts Searchers to Patients",
-    date: "Coming soon",
+    date: "1 September 2026",
+    isoDate: "2026-09-01",
     category: "Dental Practices",
     readTime: "6 min read",
-    content: "",
-    comingSoon: true,
+    description:
+      "Most dental websites bury the information patients actually need. Here's a proven 5-page structure — and the reasoning behind each page — that consistently improves booking rates.",
+    content: `
+<p>Dental websites fail for a predictable reason: they're built to impress the dentist, not to convert the patient.</p>
+
+<p>They lead with the practice's awards and accreditations. They feature generic stock photography of smiling people. They bury the things a prospective patient actually needs — pricing signals, booking information, and answers to their specific concerns — several clicks deep, if they can be found at all.</p>
+
+<p>The result is a website that looks professional but generates few bookings. Visitors leave without contacting you, and you're left wondering whether your Google Ads campaign is working.</p>
+
+<p>Here's the structure that works. Five pages, each with a specific job to do.</p>
+
+<h2>Page 1: The Homepage — Establish Trust and Filter Intent</h2>
+
+<p>Your homepage has one job: establish enough trust that a prospective patient decides to keep reading. It's not the place to explain all your services in detail or showcase your team's qualifications at length. It's a rapid trust filter.</p>
+
+<p>The homepage should answer four questions within the first screen a visitor sees:</p>
+
+<ol>
+  <li><strong>What kind of dental practice is this?</strong> (general, cosmetic, specialist?)</li>
+  <li><strong>Who do you serve?</strong> (NHS, private, mixed? Children? Nervous patients?)</li>
+  <li><strong>Where are you?</strong> (specific location, not just "conveniently located")</li>
+  <li><strong>How do I book?</strong> (a clear, prominent CTA)</li>
+</ol>
+
+<p>Below the fold: three to five brief service highlights (not a full list — a curated selection of your most-searched or highest-value treatments), a section of genuine patient reviews, and a map showing your location.</p>
+
+<p>A critical detail most practices miss: your booking CTA should be visible in the navigation bar and repeated at the bottom of every section. Don't make a patient scroll back to the top to find the "Book Now" button.</p>
+
+<h2>Page 2: The Services Page (Or Pages) — Match Search Intent</h2>
+
+<p>This is where most dental websites get it structurally wrong. They list every service in bullet points on a single page with minimal description, or they create dozens of thin individual pages that don't rank for anything.</p>
+
+<p>The right approach depends on your practice's focus:</p>
+
+<p><strong>For general practices:</strong> Create one main services overview page with brief descriptions of each category (general dentistry, cosmetic dentistry, restorative, emergency), then individual deeper pages for your highest-value or most-searched treatments.</p>
+
+<p><strong>For specialist or cosmetic practices:</strong> Lead with your specialist services. Each key treatment (Invisalign, teeth whitening, dental implants, veneers) should have its own dedicated page.</p>
+
+<p>Why individual treatment pages? Because that's how patients search. They search "Invisalign in [city]" or "same day teeth whitening [city]" — not "dental services." If you want to rank for high-value treatment searches, you need dedicated pages that target those specific queries.</p>
+
+<p>Each treatment page should cover:</p>
+<ul>
+  <li>What the treatment is (in plain language, not clinical terminology)</li>
+  <li>Who it's suitable for</li>
+  <li>What to expect during and after treatment</li>
+  <li>How long it takes</li>
+  <li>Pricing (or at minimum, a starting price or price range)</li>
+  <li>A booking CTA</li>
+</ul>
+
+<p>The pricing point is worth dwelling on. Many practices avoid putting prices on their website out of fear of being undercut by competitors. The reality is that patients who can't find pricing information assume you're expensive — or assume you're hiding something. Transparent pricing, even if approximate, builds trust and pre-qualifies your leads.</p>
+
+<h2>Page 3: The Team Page — The Decision-Making Page</h2>
+
+<p>Choosing a dentist is a personal decision. Patients are not just selecting a service; they're selecting someone they'll need to trust with their health, their face, and their comfort. The team page is where that decision often gets made.</p>
+
+<p>A good team page includes:</p>
+
+<ul>
+  <li>Professional headshots that feel approachable, not clinical (natural backgrounds, genuine smiles — not the "arms-folded-in-scrubs" pose that every stock photo site has made ubiquitous)</li>
+  <li>Each clinician's qualifications and areas of focus — but written in a way that's meaningful to patients, not a list of acronyms</li>
+  <li>A brief personal note: why they became a dentist, what they enjoy about the work, what they're like to work with</li>
+  <li>Any special training or expertise relevant to the treatments you promote (e.g., Invisalign certified provider, nervous patient specialist)</li>
+</ul>
+
+<p>The goal is for a prospective patient to read a dentist's profile and think "I'd be comfortable with this person." If your team page reads like a list of credentials with a formal headshot, it's not doing its job.</p>
+
+<h2>Page 4: The Nervous Patients Page — Your Highest-Converting Opportunity</h2>
+
+<p>A dedicated page for anxious or nervous patients is the single highest-leverage page most dental practices don't have.</p>
+
+<p>Dental anxiety affects roughly 36% of the population to some degree. A significant portion of those people are actively avoiding dental care because they can't find a practice that demonstrates it understands their experience. If your website has a page that speaks directly to them — that acknowledges the fear without being condescending, explains what accommodations you make, and invites them to contact you before booking — you're differentiating yourself from almost every practice in your area.</p>
+
+<p>This page should:</p>
+<ul>
+  <li>Validate the experience (dental anxiety is common and there is no judgment here)</li>
+  <li>Explain specifically what you do differently for anxious patients (longer appointments, "stop signals," sedation options, always explaining before touching)</li>
+  <li>Include a testimonial from a patient who was nervous and is now a regular</li>
+  <li>Offer a lower-barrier entry point: "Start with a no-obligation consultation where we just talk" is less threatening than "Book an appointment"</li>
+</ul>
+
+<p>This page also ranks well organically because "nervous patient dentist [city]" is a common, specific search term with high intent.</p>
+
+<h2>Page 5: The Contact / Booking Page — Remove Every Barrier</h2>
+
+<p>The booking page is where many dental websites lose patients they've already convinced. The page is hard to find, the form is long and complicated, or the only option is a phone number — which anxious patients and patients contacting you outside business hours simply won't use.</p>
+
+<p>An effective contact/booking page has:</p>
+
+<ul>
+  <li><strong>Multiple contact methods:</strong> online booking (ideally real-time, not "we'll call you back to confirm"), phone number, email, and where appropriate, WhatsApp or a live chat option</li>
+  <li><strong>A simple form</strong> with minimal required fields — name, contact method, and preferred appointment time is enough to start</li>
+  <li><strong>Clear opening hours</strong> and a note about response time for enquiries ("We aim to respond within 2 hours during business hours")</li>
+  <li><strong>A map and parking/transport information</strong> — this matters more than most practices realise</li>
+  <li><strong>A note about what to expect after enquiring</strong> — "We'll send a confirmation within 15 minutes" removes a common anxiety about whether the booking actually went through</li>
+</ul>
+
+<p>If you use an online booking system (Dentally, Software of Excellence, or a calendar integration like Cal.com), expose it directly on this page. Every additional step between intent and booking loses a percentage of prospective patients.</p>
+
+<h2>What Goes Everywhere: Social Proof</h2>
+
+<p>This isn't a sixth page — it's a layer that should exist across all five. Patient reviews, before-and-after galleries (with appropriate consent), and trust indicators (GDC registration, BDA membership, Google rating) should appear contextually throughout the site.</p>
+
+<p>Specifically:</p>
+<ul>
+  <li>3–5 reviews on the homepage</li>
+  <li>1–2 relevant reviews on each treatment page</li>
+  <li>A review on the nervous patients page from an anxious patient specifically</li>
+  <li>Your overall rating displayed in the header or navigation</li>
+</ul>
+
+<p>Don't gather all your social proof on a single "Testimonials" page that patients have to navigate to. Embed it where it's most relevant to the decision being made at that moment in their journey.</p>
+
+<h2>The Technical Foundation Matters Too</h2>
+
+<p>All of this content architecture only converts if the technical foundation is solid. The most common technical issues I see on dental websites:</p>
+
+<ul>
+  <li><strong>Slow loading speed</strong> — especially on mobile. Patients searching on their phone will leave within 3 seconds if the page hasn't loaded. Google also penalises slow sites in search rankings.</li>
+  <li><strong>Not mobile-optimised</strong> — this should be a given in 2026, but it's still surprisingly common. Your contact form and booking flow must work flawlessly on a smartphone.</li>
+  <li><strong>Missing or incorrect local SEO signals</strong> — Google Business Profile not linked to the website, NAP inconsistencies across directories, no schema markup for the practice's address and services.</li>
+  <li><strong>No clear conversion tracking</strong> — if you don't know which page a patient visited before booking, you can't make informed decisions about where to invest.</li>
+</ul>
+
+<h2>Getting Started</h2>
+
+<p>If you're working with a new site: build these five pages in this order of priority — Homepage, Booking Page (get the booking flow working first), Services, Team, Nervous Patients.</p>
+
+<p>If you're auditing an existing site: check whether each page has a clear CTA, whether pricing is present on treatment pages, and whether your nervous patients are addressed anywhere. Those are the three changes that most consistently improve booking rates.</p>
+
+<p>If you'd like a professional audit of your dental practice's website — or want to discuss building a new one around this structure — <a href="/book">book a free strategy session</a>. I specialise in dental and healthcare practice websites, and I'll walk through your current site with you before we discuss any work.</p>
+    `.trim(),
   },
 };
 
 // Required for Next.js static export with a dynamic segment.
-// dynamicParams = false means any unlisted slug 404s rather than trying to render.
 export const dynamicParams = false;
 
 export function generateStaticParams() {
@@ -75,12 +423,45 @@ export async function generateMetadata({
   const { slug } = await params;
   const post = posts[slug];
   if (!post) return {};
+
+  if (post.comingSoon) {
+    return {
+      title: `${post.title} — Coming Soon`,
+      description: post.title,
+      robots: { index: false, follow: false },
+    };
+  }
+
   return {
-    title: post.comingSoon
-      ? `${post.title} — Coming Soon | Deep Tech Solutions`
-      : `${post.title} — Deep Tech Solutions`,
-    description: post.title,
-    robots: post.comingSoon ? { index: false, follow: false } : undefined,
+    title: post.title,
+    description: post.description,
+    authors: [{ name: "Deepak Kumar", url: SITE_URL }],
+    openGraph: {
+      type: "article",
+      title: post.title,
+      description: post.description,
+      url: `${SITE_URL}/blog/${slug}`,
+      siteName: "Deep Tech Solutions",
+      publishedTime: post.isoDate,
+      authors: ["Deepak Kumar"],
+      images: [
+        {
+          url: `${SITE_URL}/og-image.png`,
+          width: 1200,
+          height: 630,
+          alt: post.title,
+        },
+      ],
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: post.title,
+      description: post.description,
+      images: [`${SITE_URL}/og-image.png`],
+    },
+    alternates: {
+      canonical: `${SITE_URL}/blog/${slug}`,
+    },
   };
 }
 
@@ -179,6 +560,34 @@ export default async function BlogPostPage({
     );
   }
 
+  // ── Article JSON-LD ──────────────────────────────────────────────────────────
+  const articleSchema = {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "headline": post.title,
+    "description": post.description,
+    "datePublished": post.isoDate,
+    "dateModified": post.isoDate,
+    "author": {
+      "@type": "Person",
+      "name": "Deepak Kumar",
+      "url": SITE_URL,
+    },
+    "publisher": {
+      "@type": "Organization",
+      "name": "Deep Tech Solutions",
+      "logo": {
+        "@type": "ImageObject",
+        "url": `${SITE_URL}/og-image.png`,
+      },
+    },
+    "mainEntityOfPage": {
+      "@type": "WebPage",
+      "@id": `${SITE_URL}/blog/${slug}`,
+    },
+    "image": `${SITE_URL}/og-image.png`,
+  };
+
   // ── Published post ──────────────────────────────────────────────────────────
   return (
     <main
@@ -190,6 +599,11 @@ export default async function BlogPostPage({
         padding: "120px clamp(20px, 5vw, 60px) 80px",
       }}
     >
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(articleSchema) }}
+      />
+
       <article style={{ maxWidth: 720, margin: "0 auto" }}>
         <Link
           href="/blog"
@@ -252,6 +666,36 @@ export default async function BlogPostPage({
           }}
           dangerouslySetInnerHTML={{ __html: post.content }}
         />
+
+        {/* Post footer CTA */}
+        <div
+          style={{
+            marginTop: 64,
+            paddingTop: 40,
+            borderTop: "1px solid var(--color-border)",
+            display: "flex",
+            flexDirection: "column",
+            gap: 12,
+          }}
+        >
+          <p
+            style={{
+              fontSize: "0.8rem",
+              color: "var(--color-text-3)",
+              fontWeight: 600,
+              letterSpacing: "0.08em",
+              textTransform: "uppercase",
+            }}
+          >
+            About the author
+          </p>
+          <p style={{ color: "var(--color-text-2)", lineHeight: 1.7 }}>
+            Deepak Kumar is the founder of Deep Tech Solutions — a solo freelance practice specialising in web design, local SEO, and lead generation for dental clinics, restaurants, and local service businesses.{" "}
+            <Link href="/book" style={{ color: "var(--color-accent)", textDecoration: "none" }}>
+              Book a free strategy session →
+            </Link>
+          </p>
+        </div>
       </article>
     </main>
   );

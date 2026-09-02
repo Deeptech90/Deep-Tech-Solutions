@@ -11,7 +11,23 @@ export const metadata: Metadata = {
 // Each post needs a matching folder: app/blog/[slug]/page.tsx
 // Example:
 //   { slug: "local-seo-guide", title: "Why Your GBP Is Your Best Marketing Tool", date: "2026-08-01" }
-const PUBLISHED_POSTS: { slug: string; title: string; date: string }[] = [];
+const PUBLISHED_POSTS: { slug: string; title: string; date: string }[] = [
+  {
+    slug: "local-seo-guide",
+    title: "Why Your Google Business Profile Is Your Most Powerful Local Marketing Tool",
+    date: "1 September 2026",
+  },
+  {
+    slug: "restaurant-delivery-apps",
+    title: "How Restaurants Can Reduce Dependence on Delivery Apps (And Keep More Revenue)",
+    date: "1 September 2026",
+  },
+  {
+    slug: "dental-website-structure",
+    title: "The 5-Page Dental Website Structure That Consistently Converts Searchers to Patients",
+    date: "1 September 2026",
+  },
+];
 // ─────────────────────────────────────────────────────────────────────────────
 
 export default function BlogIndexPage() {

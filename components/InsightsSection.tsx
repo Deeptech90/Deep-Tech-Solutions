@@ -1,5 +1,6 @@
 "use client";
 
+import Link from "next/link";
 import { motion, useReducedMotion } from "motion/react";
 import FadeUp from "@/components/motion/FadeUp";
 import StaggerContainer, {
@@ -30,7 +31,8 @@ export default function InsightsSection() {
       excerpt:
         "Most local businesses set up their GBP once and forget it. Here's why that's leaving calls and walk-ins on the table — and what to do instead.",
       readTime: "5 min read",
-      comingSoon: true,  // set to false and add slug when published
+      comingSoon: false,
+      slug: "local-seo-guide",
     },
     {
       id: "insight-restaurant",
@@ -40,7 +42,8 @@ export default function InsightsSection() {
       excerpt:
         "Third-party platforms take 15–30% of every order. Direct online ordering isn't complicated — and it pays for itself fast.",
       readTime: "7 min read",
-      comingSoon: true,  // set to false and add slug when published
+      comingSoon: false,
+      slug: "restaurant-delivery-apps",
     },
     {
       id: "insight-dental",
@@ -50,7 +53,8 @@ export default function InsightsSection() {
       excerpt:
         "Most dental websites bury the information patients actually need. Here's a structure — and reasoning — that's proven to improve booking rates.",
       readTime: "6 min read",
-      comingSoon: true,  // set to false and add slug when published
+      comingSoon: false,
+      slug: "dental-website-structure",
     },
   ];
 
@@ -97,7 +101,13 @@ export default function InsightsSection() {
               </div>
               <div className="insight-card__body">
                 <p className="insight-card__category">{post.category}</p>
-                <h3 className="insight-card__title">{post.title}</h3>
+                {post.comingSoon ? (
+                  <h3 className="insight-card__title">{post.title}</h3>
+                ) : (
+                  <Link href={`/blog/${post.slug}`} style={{ textDecoration: "none", color: "inherit" }}>
+                    <h3 className="insight-card__title" style={{ cursor: "pointer" }}>{post.title}</h3>
+                  </Link>
+                )}
                 <p className="insight-card__excerpt">{post.excerpt}</p>
                 <div className="insight-card__meta">
                   <span>{post.readTime}</span>
@@ -112,9 +122,13 @@ export default function InsightsSection() {
                       Coming soon
                     </span>
                   ) : (
-                    <span className="insight-card__read-more">
+                    <Link
+                      href={`/blog/${post.slug}`}
+                      className="insight-card__read-more"
+                      style={{ textDecoration: "none" }}
+                    >
                       Read →
-                    </span>
+                    </Link>
                   )}
                 </div>
               </div>

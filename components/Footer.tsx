@@ -1,6 +1,8 @@
 "use client";
 
+import Link from "next/link";
 import FadeUp from "@/components/motion/FadeUp";
+
 
 export default function Footer() {
   const currentYear = new Date().getFullYear();
@@ -179,13 +181,25 @@ export default function Footer() {
           <p className="footer__copy">
             © {currentYear} Deep Tech Solutions. All rights reserved.
           </p>
+          {/* Trust line — visible to EU/US B2B buyers */}
+          <p
+            style={{
+              fontSize: "0.75rem",
+              color: "var(--color-text-3)",
+              textAlign: "center",
+              margin: "8px 0 0",
+              letterSpacing: "0.04em",
+            }}
+          >
+            GDPR-compliant &nbsp;·&nbsp; Transparent pricing &nbsp;·&nbsp; No long-term lock-in
+          </p>
           <nav className="footer__legal" aria-label="Legal links">
-            <a href="#" id="footer-privacy">
+            <Link href="/privacy" id="footer-privacy">
               Privacy Policy
-            </a>
-            <a href="#" id="footer-terms">
+            </Link>
+            <Link href="/terms" id="footer-terms">
               Terms of Service
-            </a>
+            </Link>
           </nav>
         </div>
       </div>
