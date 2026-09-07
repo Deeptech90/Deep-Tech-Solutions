@@ -136,8 +136,11 @@ export default function RootLayout({
     ],
     "serviceType": [
       "Website Design & Development",
-      "Local SEO",
-      "Lead Generation",
+      "Small Business Web Design",
+      "Freelance Web Developer",
+      "Website Redesign",
+      "Lead Generation Websites",
+      "Local SEO Web Design",
       "Google Business Profile Optimisation",
       "Booking System Integration",
     ],

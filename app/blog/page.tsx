@@ -13,6 +13,31 @@ export const metadata: Metadata = {
 //   { slug: "local-seo-guide", title: "Why Your GBP Is Your Best Marketing Tool", date: "2026-08-01" }
 const PUBLISHED_POSTS: { slug: string; title: string; date: string }[] = [
   {
+    slug: "small-business-website-cost",
+    title: "How Much Does a Small Business Website Cost in 2026?",
+    date: "5 September 2026",
+  },
+  {
+    slug: "what-should-a-small-business-website-include",
+    title: "What Should a Small Business Website Include? (The Essential Checklist)",
+    date: "5 September 2026",
+  },
+  {
+    slug: "freelancer-vs-agency",
+    title: "Freelance Web Developer vs. Agency: Which Is Better for Your Small Business?",
+    date: "5 September 2026",
+  },
+  {
+    slug: "how-to-get-more-leads-from-website",
+    title: "How to Get More Leads From Your Business Website",
+    date: "5 September 2026",
+  },
+  {
+    slug: "small-business-website-redesign-checklist",
+    title: "Small Business Website Redesign Checklist: 20 Things to Do Before and After",
+    date: "5 September 2026",
+  },
+  {
     slug: "local-seo-guide",
     title: "Why Your Google Business Profile Is Your Most Powerful Local Marketing Tool",
     date: "1 September 2026",
