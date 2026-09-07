@@ -297,15 +297,19 @@ button {
   right: 0;
   z-index: 1000;
   padding: 0 clamp(20px, 5vw, 60px);
-  transition: background 0.4s var(--ease-in-out), border-color 0.4s;
-  border-bottom: 1px solid transparent;
+  background: rgba(20, 22, 24, 0.85);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.07);
+  transition: background 0.3s var(--ease-in-out), border-color 0.3s, box-shadow 0.3s;
 }
 
 .nav.scrolled {
-  background: rgba(25, 27, 29, 0.92);
-  backdrop-filter: blur(20px);
-  -webkit-backdrop-filter: blur(20px);
-  border-bottom-color: var(--color-border);
+  background: rgba(18, 20, 22, 0.96);
+  backdrop-filter: blur(24px);
+  -webkit-backdrop-filter: blur(24px);
+  border-bottom-color: rgba(201, 168, 118, 0.22);
+  box-shadow: 0 4px 28px rgba(0, 0, 0, 0.5);
 }
 
 .nav__inner {
@@ -872,13 +876,16 @@ button {
 
 .about__visual {
   position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
 }
 
 .about__card-main {
   background: var(--color-surface);
   border: 1px solid var(--color-border);
   border-radius: var(--radius-xl);
-  padding: 48px;
+  padding: 36px 40px;
   position: relative;
   overflow: hidden;
 }
@@ -935,33 +942,31 @@ button {
 }
 
 .about__advantages {
-  position: absolute;
-  bottom: -20px;
-  right: -20px;
+  position: relative;
   background: var(--color-surface-2);
   border: 1px solid var(--color-border);
-  border-radius: var(--radius-lg);
-  padding: 20px 24px;
-  min-width: 200px;
+  border-radius: var(--radius-xl);
+  padding: 24px 28px;
   box-shadow: var(--shadow-md);
 }
 
 .about__advantages-title {
   font-size: 0.75rem;
   font-weight: 700;
-  letter-spacing: 0.08em;
+  letter-spacing: 0.1em;
   text-transform: uppercase;
-  color: var(--color-text-3);
+  color: var(--color-accent);
   margin-bottom: 14px;
 }
 
 .about__advantage-item {
   display: flex;
-  align-items: center;
-  gap: 8px;
-  font-size: 0.83rem;
+  align-items: flex-start;
+  gap: 12px;
+  font-size: 0.88rem;
+  line-height: 1.55;
   color: var(--color-text-2);
-  margin-bottom: 10px;
+  margin-bottom: 12px;
 }
 
 .about__advantage-item:last-child {
@@ -974,6 +979,7 @@ button {
   border-radius: 50%;
   background: var(--color-accent);
   flex-shrink: 0;
+  margin-top: 7px;
 }
 
 .about__content {
@@ -1452,10 +1458,7 @@ button {
     gap: 60px;
   }
   .about__advantages {
-    position: relative;
-    bottom: auto;
-    right: auto;
-    margin-top: 20px;
+    margin-top: 0;
   }
   .pricing__grid {
     grid-template-columns: 1fr;

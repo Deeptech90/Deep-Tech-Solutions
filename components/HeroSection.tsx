@@ -23,7 +23,8 @@ export default function HeroSection() {
   return (
     <>
       <section
-        className="relative min-h-[92vh] w-full overflow-hidden bg-[#141618] text-white pt-24 pb-16 md:pt-28 md:pb-24"
+        className="relative min-h-[92vh] w-full overflow-hidden bg-[#141618] text-white pb-16 md:pb-24"
+        style={{ paddingTop: "clamp(124px, 14vh, 160px)" }}
         id="hero"
         aria-label="Hero Section"
       >
